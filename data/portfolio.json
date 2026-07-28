@@ -1,0 +1,72 @@
+[
+  {
+    "id": "echoes-of-empires",
+    "title": "Echoes of Empires",
+    "category": "feature",
+    "categoryLabel": "Feature Length | Historical Drama",
+    "logline": "An intimate political epic documenting the final 48 hours of an ancient dynasty as warring factions maneuver for throne control under celestial omens.",
+    "specs": "65mm Anamorphic | 148 Mins",
+    "director": "Director: Marcus Vance | Cinematography: Elena Rostova",
+    "format": "65mm Anamorphic",
+    "sound": "Dolby Atmos 7.1",
+    "status": "Festival Circuit 2026",
+    "badge": "Cannes Palme d'Or Nominee",
+    "img": "assets/images/hero/slate_film1.png"
+  },
+  {
+    "id": "chronos-horizon",
+    "title": "Chronos Horizon",
+    "category": "feature",
+    "categoryLabel": "Feature Length | Sci-Fi Thriller",
+    "logline": "When deep-space temporal anomalies begin fracturing human perception, an orbital station engineer must outrun time itself to prevent extinction.",
+    "specs": "IMAX 8K | 124 Mins",
+    "director": "Director: Kaelen Voss | Visual FX: Nebula Studios",
+    "format": "8K Digital IMAX",
+    "sound": "DTS:X Surround",
+    "status": "In Post-Production",
+    "badge": "Venice Silver Lion Winner",
+    "img": "assets/images/hero/hero_cinematic.png"
+  },
+  {
+    "id": "the-last-nomads",
+    "title": "The Last Nomads",
+    "category": "short",
+    "categoryLabel": "Short Film | Editorial Doc",
+    "logline": "A poignant visual symphony exploring the vanishing migratory routes of Eurasian mountain herders confronting climate shifts.",
+    "specs": "Super 35mm | 28 Mins",
+    "director": "Director: Sophia Lin | Editing: Tariq Al-Mansoor",
+    "format": "Super 35mm Film",
+    "sound": "Binaural Spatial",
+    "status": "Official Selection Cannes",
+    "badge": "Sundance Grand Jury Prize",
+    "img": "assets/images/hero/slate_film1.png"
+  },
+  {
+    "id": "sovereign-noir",
+    "title": "Sovereign Noir",
+    "category": "commercial",
+    "categoryLabel": "Commercial | High Fashion",
+    "logline": "An opulent, high-contrast visual study for a Paris couture house featuring shadow geometry and architectural precision.",
+    "specs": "4K RAW | 90 Sec",
+    "director": "Creative Dir: Julian Thorne",
+    "format": "4K RAW",
+    "sound": "Stereo Mastered",
+    "status": "Worldwide Campaign",
+    "badge": "Cannes Lions Gold",
+    "img": "assets/images/hero/hero_cinematic.png"
+  },
+  {
+    "id": "silent-sovereigns",
+    "title": "Silent Sovereigns",
+    "category": "series",
+    "categoryLabel": "TV Series | Political Thriller",
+    "logline": "Inside the secretive corridors of international central banking and shadow diplomacy during a global fiscal crisis.",
+    "specs": "8 Episodes | Dolby Vision",
+    "director": "Showrunner: Arthur Pendelton",
+    "format": "4K HDR Dolby Vision",
+    "sound": "Dolby 5.1",
+    "status": "Season 1 Streaming",
+    "badge": "Berlinale Series Select",
+    "img": "assets/images/hero/slate_film1.png"
+  }
+]

@@ -1,0 +1,15 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node / Build artifacts
+node_modules/
+dist/
+build/
+*.log
+
+# Editor Directories
+.vscode/
+.idea/
+.gemini/

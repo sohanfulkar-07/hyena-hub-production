@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Helena Vance",
+    "role": "Founder & Executive Producer",
+    "initials": "HV",
+    "bio": "Over 18 years packaging international co-productions and managing A-list film festival distributions across Europe, North America, and Asia."
+  },
+  {
+    "name": "Marcus Vance",
+    "role": "Head of Development & Directing",
+    "initials": "MV",
+    "bio": "Award-winning filmmaker whose narrative epics have garnered honors at Cannes, Venice, and TIFF."
+  },
+  {
+    "name": "Elena Rostova",
+    "role": "Director of Cinematography",
+    "initials": "ER",
+    "bio": "Pioneer in 65mm anamorphic optics and high-dynamic-range color science for prestige theatrical features."
+  },
+  {
+    "name": "Tariq Al-Mansoor",
+    "role": "VP of Global Distribution",
+    "initials": "TM",
+    "bio": "Architect of direct OTT platform deals, territory rights licensing, and encrypted private screener infrastructure."
+  }
+]
