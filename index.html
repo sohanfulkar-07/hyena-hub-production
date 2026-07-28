@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hyena Hub — Borderless International Cinema</title>
+  <meta name="description" content="A borderless film production house and distribution ecosystem calibrated for international cinema, narrative storytelling, and global platform syndication.">
+  
+  <!-- Typography: Google Fonts (Playfair Display & Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Main Editorial Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. NAVIGATION BAR (Sticky Semi-Transparent Obsidian Blur)
+       ========================================================================== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo" id="brandLogo">
+        <img src="assets/logo.png" id="appLogoBrand" alt="The Hyena Hub Logo">
+        <span class="brand-text">The Hyena <span>Hub</span></span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#pipeline" class="nav-link">The Pipeline</a></li>
+        <li><a href="#slate" class="nav-link">Our Slate</a></li>
+        <li><a href="#theater" class="nav-link">Private Theater</a></li>
+        <li><a href="#intake" class="nav-link">Submit a Story</a></li>
+      </ul>
+
+      <!-- Action Button -->
+      <div class="nav-actions">
+        <a href="#intake" class="btn btn-outline-gold">Direct Inquiries</a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <ul class="mobile-nav-links">
+      <li><a href="#home" class="mobile-nav-link">Home</a></li>
+      <li><a href="#pipeline" class="mobile-nav-link">The Pipeline</a></li>
+      <li><a href="#slate" class="mobile-nav-link">Our Slate</a></li>
+      <li><a href="#theater" class="mobile-nav-link">Private Theater</a></li>
+      <li><a href="#intake" class="mobile-nav-link">Submit a Story</a></li>
+    </ul>
+    <a href="#intake" class="btn btn-gold" style="width: 100%;">Direct Inquiries</a>
+  </div>
+
+
+  <!-- ==========================================================================
+       2. HERO SECTION (The Hook)
+       ========================================================================== -->
+  <section class="hero" id="home">
+    <div class="hero-media-wrap">
+      <img src="assets/hero_cinematic.png" alt="Hyena Hub Cinematic Still" class="hero-backdrop-img">
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge fade-in-up">
+        <span class="hero-badge-dot"></span>
+        FIAPF & International Producers Guild Calibrated
+      </div>
+      
+      <h1 class="hero-title fade-in-up delay-1">
+        Stories Across <span class="text-gradient-gold">Civilisation</span>, Culture, Science, Sociology, Politics, and History.
+      </h1>
+      
+      <p class="hero-subtext fade-in-up delay-2">
+        A borderless production house calibrated for international cinema, bringing visionaries together to craft timeless, festival-honored motion pictures.
+      </p>
+
+      <div class="hero-cta-group fade-in-up delay-3">
+        <a href="#slate" class="btn btn-gold">Explore Our Slate</a>
+        <a href="#theater" class="btn btn-outline-gold">Enter Private Theater</a>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <a href="#pipeline" class="scroll-indicator fade-in-up delay-4">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </a>
+  </section>
+
+
+  <!-- ==========================================================================
+       3. THE PIPELINE (3-Stage Pre-to-Post Ecosystem)
+       ========================================================================== -->
+  <section class="section" id="pipeline">
+    <div class="container">
+      <div class="section-header center fade-in-up">
+        <span class="section-label">Production Architecture</span>
+        <h2 class="section-title">The End-to-End Pipeline</h2>
+        <p class="section-subtitle">
+          From narrative genesis to worldwide platform syndication, our 3-stage ecosystem ensures meticulous craft and festival-grade precision at every frame.
+        </p>
+      </div>
+
+      <div class="pipeline-grid fade-in-up delay-1">
+        <div class="pipeline-connector"></div>
+
+        <!-- Stage 1: Genesis -->
+        <div class="pipeline-card active" data-stage="1">
+          <div class="pipeline-stage-number">01</div>
+          <h3 class="pipeline-card-title">Genesis</h3>
+          <div class="pipeline-card-sub">Development & Packaging</div>
+          <p class="pipeline-card-desc">
+            Concept origination, screenplay development, visual bibles, art design, and international co-production financing structures.
+          </p>
+          <div class="pipeline-tags">
+            <span class="pipeline-tag">Script Writing</span>
+            <span class="pipeline-tag">Art Design</span>
+            <span class="pipeline-tag">Screenplay</span>
+          </div>
+        </div>
+
+        <!-- Stage 2: Execution -->
+        <div class="pipeline-card" data-stage="2">
+          <div class="pipeline-stage-number">02</div>
+          <h3 class="pipeline-card-title">Execution</h3>
+          <div class="pipeline-card-sub">Production & Craft</div>
+          <p class="pipeline-card-desc">
+            High-precision principal photography, 65mm sensor optics, festival-calibrated cinematography, and orchestral sound design.
+          </p>
+          <div class="pipeline-tags">
+            <span class="pipeline-tag">Cinematography</span>
+            <span class="pipeline-tag">Score Production</span>
+            <span class="pipeline-tag">65mm Optics</span>
+          </div>
+        </div>
+
+        <!-- Stage 3: Distribution -->
+        <div class="pipeline-card" data-stage="3">
+          <div class="pipeline-stage-number">03</div>
+          <h3 class="pipeline-card-title">Distribution</h3>
+          <div class="pipeline-card-sub">Syndication & Theater</div>
+          <p class="pipeline-card-desc">
+            Strategic festival positioning, brand alignment, global platform deals, and exclusive encrypted Private Theater screenings.
+          </p>
+          <div class="pipeline-tags">
+            <span class="pipeline-tag">Branding</span>
+            <span class="pipeline-tag">Platform Deals</span>
+            <span class="pipeline-tag">Private Theater</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Stage Detail Panel -->
+      <div class="pipeline-detail-panel fade-in-up delay-2" id="pipelineDetailPanel">
+        <div>
+          <h3 class="panel-title" id="pipelinePanelTitle">Stage 01: Genesis & Intellectual Property Design</h3>
+          <p class="section-subtitle" id="pipelinePanelDesc">
+            Architecting world-class screenplays, narrative bibles, and visual treatments calibrated for prestigious global festivals and international co-production partners.
+          </p>
+          <ul class="panel-bullets" id="pipelineBullets">
+            <li class="panel-bullet-item">
+              <div class="panel-bullet-icon">✓</div>
+              <span>In-depth screenplay development with award-winning dramaturgs.</span>
+            </li>
+            <li class="panel-bullet-item">
+              <div class="panel-bullet-icon">✓</div>
+              <span>World-building visual bibles & high-concept pitch packaging.</span>
+            </li>
+            <li class="panel-bullet-item">
+              <div class="panel-bullet-icon">✓</div>
+              <span>Legal chain-of-title verification & international optioning.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel-stat-box">
+          <div class="stat-item">
+            <div class="stat-value" id="pipelineStatVal1">12 - 18 Wks</div>
+            <div class="stat-label" id="pipelineStatLbl1">Development Cycle</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="pipelineStatVal2">Top 1%</div>
+            <div class="stat-label" id="pipelineStatLbl2">Script Curation Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       4. OUR SLATE (Editorial Showcase & Categorized Grid)
+       ========================================================================== -->
+  <section class="section" id="slate">
+    <div class="container">
+      <div class="section-header center fade-in-up">
+        <span class="section-label">Curated Motion Pictures</span>
+        <h2 class="section-title">Our International Slate</h2>
+        <p class="section-subtitle">
+          An editorial showcase of narrative feature films, high-concept series, short films, and auteur commercial work.
+        </p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="slate-filters fade-in-up delay-1">
+        <button class="filter-btn active" data-filter="all">All Works</button>
+        <button class="filter-btn" data-filter="feature">Feature Length</button>
+        <button class="filter-btn" data-filter="short">Short Films</button>
+        <button class="filter-btn" data-filter="series">TV & Web Series</button>
+        <button class="filter-btn" data-filter="commercial">Commercials</button>
+      </div>
+
+      <!-- Asymmetric CSS Editorial Grid -->
+      <div class="slate-grid fade-in-up delay-2">
+
+        <!-- Film 1: Feature Length -->
+        <div class="slate-card span-7 tall" data-category="feature">
+          <div class="slate-poster-wrap">
+            <img src="assets/slate_film1.png" alt="Echoes of Empires Poster" class="slate-poster-img">
+            <div class="slate-laurel-badge">
+              <svg class="slate-laurel-svg" viewBox="0 0 24 24"><path d="M12 2L9 7l-5 1 4 4-1 5 5-3 5 3-1-5 4-4-5-1z"/></svg>
+              Cannes Palme d'Or Nominee
+            </div>
+          </div>
+          <div class="slate-card-body">
+            <div class="slate-category-tag">Feature Length | Historical Drama</div>
+            <h3 class="slate-film-title">Echoes of Empires</h3>
+            <p class="slate-film-logline">
+              An intimate political epic documenting the final 48 hours of an ancient dynasty as warring factions maneuver for throne control under celestial omens.
+            </p>
+            <div class="slate-card-footer">
+              <span class="slate-meta-specs">65mm Anamorphic | 148 Mins</span>
+              <button class="slate-action-link open-case-study" data-film="echoes-of-empires">
+                View Case Study <span>→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Film 2: Feature Sci-Fi -->
+        <div class="slate-card span-5" data-category="feature">
+          <div class="slate-poster-wrap">
+            <img src="assets/hero_cinematic.png" alt="Chronos Horizon Poster" class="slate-poster-img">
+            <div class="slate-laurel-badge">
+              <svg class="slate-laurel-svg" viewBox="0 0 24 24"><path d="M12 2L9 7l-5 1 4 4-1 5 5-3 5 3-1-5 4-4-5-1z"/></svg>
+              Venice Silver Lion Winner
+            </div>
+          </div>
+          <div class="slate-card-body">
+            <div class="slate-category-tag">Feature Length | Sci-Fi Thriller</div>
+            <h3 class="slate-film-title">Chronos Horizon</h3>
+            <p class="slate-film-logline">
+              When deep-space temporal anomalies begin fracturing human perception, an orbital station engineer must outrun time itself to prevent extinction.
+            </p>
+            <div class="slate-card-footer">
+              <span class="slate-meta-specs">IMAX 8K | 124 Mins</span>
+              <button class="slate-action-link open-case-study" data-film="chronos-horizon">
+                View Case Study <span>→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Film 3: Short Film -->
+        <div class="slate-card span-4" data-category="short">
+          <div class="slate-poster-wrap">
+            <img src="assets/slate_film1.png" alt="The Last Nomads Poster" class="slate-poster-img">
+            <div class="slate-laurel-badge">
+              <svg class="slate-laurel-svg" viewBox="0 0 24 24"><path d="M12 2L9 7l-5 1 4 4-1 5 5-3 5 3-1-5 4-4-5-1z"/></svg>
+              Sundance Grand Jury Prize
+            </div>
+          </div>
+          <div class="slate-card-body">
+            <div class="slate-category-tag">Short Film | Editorial Doc</div>
+            <h3 class="slate-film-title">The Last Nomads</h3>
+            <p class="slate-film-logline">
+              A poignant visual symphony exploring the vanishing migratory routes of Eurasian mountain herders confronting climate shifts.
+            </p>
+            <div class="slate-card-footer">
+              <span class="slate-meta-specs">Super 35mm | 28 Mins</span>
+              <button class="slate-action-link open-case-study" data-film="the-last-nomads">
+                View Trailer <span>→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Film 4: Commercial -->
+        <div class="slate-card span-4" data-category="commercial">
+          <div class="slate-poster-wrap">
+            <img src="assets/hero_cinematic.png" alt="Sovereign Noir Poster" class="slate-poster-img">
+            <div class="slate-laurel-badge">
+              <svg class="slate-laurel-svg" viewBox="0 0 24 24"><path d="M12 2L9 7l-5 1 4 4-1 5 5-3 5 3-1-5 4-4-5-1z"/></svg>
+              Cannes Lions Gold
+            </div>
+          </div>
+          <div class="slate-card-body">
+            <div class="slate-category-tag">Commercial | High Fashion</div>
+            <h3 class="slate-film-title">Sovereign Noir</h3>
+            <p class="slate-film-logline">
+              An opulent, high-contrast visual study for a Paris couture house featuring shadow geometry and architectural precision.
+            </p>
+            <div class="slate-card-footer">
+              <span class="slate-meta-specs">4K RAW | 90 Sec</span>
+              <button class="slate-action-link open-case-study" data-film="sovereign-noir">
+                View Campaign <span>→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Film 5: TV & Web Series -->
+        <div class="slate-card span-4" data-category="series">
+          <div class="slate-poster-wrap">
+            <img src="assets/slate_film1.png" alt="Silent Sovereigns Poster" class="slate-poster-img">
+            <div class="slate-laurel-badge">
+              <svg class="slate-laurel-svg" viewBox="0 0 24 24"><path d="M12 2L9 7l-5 1 4 4-1 5 5-3 5 3-1-5 4-4-5-1z"/></svg>
+              Berlinale Series Select
+            </div>
+          </div>
+          <div class="slate-card-body">
+            <div class="slate-category-tag">TV Series | Political Thriller</div>
+            <h3 class="slate-film-title">Silent Sovereigns</h3>
+            <p class="slate-film-logline">
+              Inside the secretive corridors of international central banking and shadow diplomacy during a global fiscal crisis.
+            </p>
+            <div class="slate-card-footer">
+              <span class="slate-meta-specs">8 Episodes | Dolby Vision</span>
+              <button class="slate-action-link open-case-study" data-film="silent-sovereigns">
+                View Case Study <span>→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       5. THE PRIVATE THEATER (Distribution Hook & Screening Room)
+       ========================================================================== -->
+  <section class="section theater-section" id="theater">
+    <div class="container theater-container">
+      
+      <div class="theater-header-bar fade-in-up">
+        <div>
+          <span class="section-label">Screening Room</span>
+          <h2 class="section-title">The Private Theater</h2>
+        </div>
+
+        <!-- Theater Light Toggle Button -->
+        <div class="theater-light-toggle" id="theaterLightToggle" title="Toggle Page Dimmer Mode">
+          <div class="toggle-switch"></div>
+          <span class="toggle-label">Theater Mode</span>
+        </div>
+      </div>
+
+      <!-- Player Frame -->
+      <div class="theater-frame fade-in-up delay-1">
+        <div class="theater-screen-content">
+          <img src="assets/hero_cinematic.png" alt="Screening Preview" class="theater-bg-art">
+          
+          <div class="theater-play-overlay" id="theaterOverlay">
+            <button class="play-circle-btn" id="theaterPlayBtn" aria-label="Play Screening Trailer">
+              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            </button>
+            <div class="screen-label-text">Privileged Executive Screening</div>
+          </div>
+        </div>
+
+        <!-- Custom Controls Bar -->
+        <div class="theater-controls-bar">
+          <div class="control-group">
+            <button class="control-btn" id="muteBtn" aria-label="Mute Volume">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+            </button>
+            <span style="font-size: 0.75rem; color: var(--color-text-muted);">01:42 / 04:15</span>
+          </div>
+
+          <div class="time-track">
+            <div class="time-progress" id="timeProgress"></div>
+          </div>
+
+          <div class="control-group">
+            <span class="badge-4k">4K HDR</span>
+            <span style="font-size: 0.75rem; color: var(--color-gold);">DRM Encrypted</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Syndication Value Props -->
+      <div class="theater-syndication-features fade-in-up delay-2">
+        <div class="syndication-item">
+          <div class="syndication-icon">✦</div>
+          <h3 class="syndication-title">Direct-to-Platform</h3>
+          <p class="syndication-desc">
+            Direct OTT and global theatrical syndication agreements bypass traditional friction.
+          </p>
+        </div>
+        <div class="syndication-item">
+          <div class="syndication-icon">🛡️</div>
+          <h3 class="syndication-title">Watermarked Screeners</h3>
+          <p class="syndication-desc">
+            Forensic DRM watermarking for high-security buyer premieres and press access.
+          </p>
+        </div>
+        <div class="syndication-item">
+          <div class="syndication-icon">🌐</div>
+          <h3 class="syndication-title">Global Rights Hub</h3>
+          <p class="syndication-desc">
+            Territory-by-territory license management for international acquisitions.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       6. CREATOR INTAKE (Submit a Story Multi-Step Form)
+       ========================================================================== -->
+  <section class="section" id="intake">
+    <div class="container">
+      <div class="section-header center fade-in-up">
+        <span class="section-label">Global Creator Portal</span>
+        <h2 class="section-title">Submit A Story</h2>
+        <p class="section-subtitle">
+          We invite screenwriters, directors, and independent producers worldwide to pitch original screenplays and packaged projects for financing & production.
+        </p>
+      </div>
+
+      <div class="intake-wrapper fade-in-up delay-1">
+        
+        <!-- Progress Steps Bar -->
+        <div class="wizard-progress">
+          <div class="progress-line-fill" id="progressLineFill" style="width: 0%;"></div>
+          
+          <div style="position:relative; display:flex; flex-direction:column; align-items:center;">
+            <div class="wizard-step-node active" data-step="1">1</div>
+            <span class="step-label-text">Creator</span>
+          </div>
+          <div style="position:relative; display:flex; flex-direction:column; align-items:center;">
+            <div class="wizard-step-node" data-step="2">2</div>
+            <span class="step-label-text">Classification</span>
+          </div>
+          <div style="position:relative; display:flex; flex-direction:column; align-items:center;">
+            <div class="wizard-step-node" data-step="3">3</div>
+            <span class="step-label-text">Logline</span>
+          </div>
+          <div style="position:relative; display:flex; flex-direction:column; align-items:center;">
+            <div class="wizard-step-node" data-step="4">4</div>
+            <span class="step-label-text">Upload</span>
+          </div>
+        </div>
+
+        <!-- Form Element -->
+        <form id="creatorIntakeForm">
+
+          <!-- STEP 1: CREATOR DETAILS -->
+          <div class="form-step-panel active" id="stepPanel1">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="creatorName">Full Name *</label>
+                <input type="text" id="creatorName" class="form-input" placeholder="e.g. Helena Vance" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="creatorEmail">Business Email *</label>
+                <input type="email" id="creatorEmail" class="form-input" placeholder="helena@cinema-agency.com" required>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="agencyRep">Representation / Agency</label>
+                <input type="text" id="agencyRep" class="form-input" placeholder="e.g. WME / Independent">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="countryOrigin">Country of Production</label>
+                <input type="text" id="countryOrigin" class="form-input" placeholder="e.g. United Kingdom / France">
+              </div>
+            </div>
+
+            <div class="form-actions-row">
+              <div></div>
+              <button type="button" class="btn btn-gold" id="btnNext1">Next: Classification →</button>
+            </div>
+          </div>
+
+          <!-- STEP 2: CLASSIFICATION & GENRE -->
+          <div class="form-step-panel" id="stepPanel2">
+            <div class="form-group">
+              <label class="form-label">Genre Selection (Select all applicable)</label>
+              <div class="genre-pills-group">
+                <input type="checkbox" id="g1" class="genre-pill-checkbox" checked><label for="g1" class="genre-pill-label">Historical Drama</label>
+                <input type="checkbox" id="g2" class="genre-pill-checkbox"><label for="g2" class="genre-pill-label">Sci-Fi / Speculative</label>
+                <input type="checkbox" id="g3" class="genre-pill-checkbox"><label for="g3" class="genre-pill-label">Political Thriller</label>
+                <input type="checkbox" id="g4" class="genre-pill-checkbox"><label for="g4" class="genre-pill-label">Sociology / Doc</label>
+                <input type="checkbox" id="g5" class="genre-pill-checkbox"><label for="g5" class="genre-pill-label">Psychological</label>
+              </div>
+            </div>
+
+            <div class="form-grid-2" style="margin-top: 1.5rem;">
+              <div class="form-group">
+                <label class="form-label" for="projectFormat">Format Target</label>
+                <select id="projectFormat" class="form-select">
+                  <option value="feature">Feature Length Film</option>
+                  <option value="series">Limited TV / Web Series</option>
+                  <option value="short">Auteur Short Film</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="projectStage">Current Project Stage</label>
+                <select id="projectStage" class="form-select">
+                  <option value="concept">Concept & Treatment</option>
+                  <option value="first_draft">First Polish Screenplay</option>
+                  <option value="packaged">Packaged with Talent Attached</option>
+                  <option value="post">In Post-Production</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-actions-row">
+              <button type="button" class="btn btn-charcoal" id="btnPrev2">← Back</button>
+              <button type="button" class="btn btn-gold" id="btnNext2">Next: Pitch & Logline →</button>
+            </div>
+          </div>
+
+          <!-- STEP 3: CREATIVE PITCH & LOGLINE -->
+          <div class="form-step-panel" id="stepPanel3">
+            <div class="form-group">
+              <label class="form-label" for="loglineText">Project Logline (One Sentence Hook) *</label>
+              <textarea id="loglineText" class="form-textarea" placeholder="When a solar solar eclipse paralyzes ancient communications, two rival generals must forge a secret truce..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="synopsisText">Brief Narrative Synopsis</label>
+              <textarea id="synopsisText" class="form-textarea" placeholder="Outline the main narrative arc, key themes, and visual tone..."></textarea>
+            </div>
+
+            <div class="form-actions-row">
+              <button type="button" class="btn btn-charcoal" id="btnPrev3">← Back</button>
+              <button type="button" class="btn btn-gold" id="btnNext3">Next: Script Upload →</button>
+            </div>
+          </div>
+
+          <!-- STEP 4: UPLOAD & SUBMIT -->
+          <div class="form-step-panel" id="stepPanel4">
+            <div class="form-group">
+              <label class="form-label">Upload Pitch Deck / Screenplay (PDF, Max 50MB)</label>
+              <div class="upload-dropzone" id="uploadDropzone">
+                <div class="upload-icon">📄</div>
+                <div class="upload-text-main">Click or Drag & Drop Pitch Deck PDF</div>
+                <div class="upload-text-sub">Protected under encrypted SSL submission pipeline</div>
+                <input type="file" id="pitchFileInput" style="display: none;" accept=".pdf,.doc,.docx">
+              </div>
+              <div id="filePreviewArea"></div>
+            </div>
+
+            <div style="margin: 1.5rem 0;">
+              <label style="font-size: 0.8rem; color: var(--color-text-muted); display:flex; align-items:center; gap:8px;">
+                <input type="checkbox" required checked>
+                I confirm I hold intellectual property rights or options for this submission.
+              </label>
+            </div>
+
+            <div class="form-actions-row">
+              <button type="button" class="btn btn-charcoal" id="btnPrev4">← Back</button>
+              <button type="submit" class="btn btn-gold">Submit Story Package</button>
+            </div>
+          </div>
+
+          <!-- STEP CONFIRMATION (Hidden initially) -->
+          <div class="form-step-panel confirmation-screen" id="stepPanelConfirm">
+            <div class="confirmation-icon-circle">✓</div>
+            <h3 class="panel-title">Submission Successfully Received</h3>
+            <p class="section-subtitle" style="margin: 0 auto;">
+              Your pitch package has been logged into our executive review portal.
+            </p>
+            <div class="ticket-box">
+              <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-dark); margin-bottom: 4px;">Tracking Reference ID</div>
+              <div class="ticket-number" id="confirmationTicket">HYN-2026-8942</div>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted);">
+              Our curation committee reviews all submissions within 48 business hours.
+            </p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       7. CASE STUDY & TRAILER MODAL DIALOG
+       ========================================================================== -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Dialog">&times;</button>
+      
+      <div class="modal-hero-frame">
+        <img src="assets/slate_film1.png" alt="Film Case Study Hero" class="modal-hero-img" id="modalHeroImg">
+      </div>
+
+      <div class="modal-content-body">
+        <div class="modal-meta-row" id="modalCategory">Feature Length | Historical Drama</div>
+        <h2 class="modal-title" id="modalTitle">Echoes of Empires</h2>
+        <p class="section-subtitle" id="modalLogline" style="max-width: 100%;">
+          An intimate political epic documenting the final 48 hours of an ancient dynasty as warring factions maneuver for throne control under celestial omens.
+        </p>
+
+        <div class="modal-specs-grid">
+          <div>
+            <div class="spec-box-label">Camera & Optics</div>
+            <div class="spec-box-val" id="modalFormat">65mm Anamorphic</div>
+          </div>
+          <div>
+            <div class="spec-box-label">Audio Mix</div>
+            <div class="spec-box-val" id="modalSound">Dolby Atmos 7.1</div>
+          </div>
+          <div>
+            <div class="spec-box-label">Color Space</div>
+            <div class="spec-box-val">ACES Certified</div>
+          </div>
+          <div>
+            <div class="spec-box-label">Status</div>
+            <div class="spec-box-val" id="modalStatus">Festival Circuit 2026</div>
+          </div>
+        </div>
+
+        <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.5rem;" id="modalDirector">
+          Director: Marcus Vance | Cinematography: Elena Rostova
+        </p>
+
+        <div style="display: flex; gap: 1rem;">
+          <a href="#theater" class="btn btn-gold" onclick="closeModal()">Screen Trailer in Theater</a>
+          <button class="btn btn-outline-gold" onclick="closeModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==========================================================================
+       8. FOOTER
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Brand Col -->
+        <div>
+          <a href="#home" class="brand-logo">
+            <img src="assets/logo.png" class="app-logo-brand" alt="The Hyena Hub Logo">
+            <span class="brand-text">The Hyena <span>Hub</span></span>
+          </a>
+          <p class="footer-brand-desc">
+            A borderless cinema house and distribution infrastructure bridging global storytelling, artistic auteur cinema, and international festival distribution.
+          </p>
+        </div>
+
+        <!-- Navigation Col -->
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#home" class="footer-link">Home</a></li>
+            <li><a href="#pipeline" class="footer-link">The Pipeline</a></li>
+            <li><a href="#slate" class="footer-link">Our Slate</a></li>
+            <li><a href="#theater" class="footer-link">Private Theater</a></li>
+            <li><a href="#intake" class="footer-link">Submit a Story</a></li>
+          </ul>
+        </div>
+
+        <!-- Accreditations Col -->
+        <div>
+          <h4 class="footer-col-title">Accreditation</h4>
+          <ul class="footer-links">
+            <li><span class="footer-link">FIAPF Accredited</span></li>
+            <li><span class="footer-link">Producers Guild Int'l</span></li>
+            <li><span class="footer-link">Dolby Vision Certified</span></li>
+            <li><span class="footer-link">Festival Circuit Partner</span></li>
+          </ul>
+        </div>
+
+        <!-- Inner Circle Newsletter -->
+        <div>
+          <h4 class="footer-col-title">The Inner Circle</h4>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1rem;">
+            Receive encrypted screening invites and festival slate updates.
+          </p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed to The Hyena Hub updates.');">
+            <input type="email" class="newsletter-input" placeholder="exec@studio.com" required>
+            <button type="submit" class="btn btn-gold" style="padding: 10px 16px;">Join</button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Footer Legal Bottom Bar -->
+      <div class="footer-bottom">
+        <div>&copy; 2026 The Hyena Hub. All Rights Reserved. Borderless Cinema & Syndication.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Rights & Licensing</a>
+          <a href="#" class="footer-link">Festival Submissions Notice</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Engine -->
+  <script src="main.js"></script>
+</body>
+</html>
