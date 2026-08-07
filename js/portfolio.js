@@ -55,29 +55,65 @@ export function initPortfolio() {
     }
   };
 
+  let activeStageId = null;
+
   pipelineCards.forEach(card => {
-    card.addEventListener('click', () => {
+    const handleStageSelect = (force = false) => {
       const stageId = card.getAttribute('data-stage');
       
-      pipelineCards.forEach(c => c.classList.remove('active'));
+      if (activeStageId === stageId && !force) return;
+      activeStageId = stageId;
+      
+      pipelineCards.forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-pressed', 'false');
+      });
       card.classList.add('active');
+      card.setAttribute('aria-pressed', 'true');
 
       const data = pipelineData[stageId];
-      if (data && pipelinePanelTitle) {
-        pipelinePanelTitle.textContent = data.title;
-        pipelinePanelDesc.textContent = data.desc;
-        
-        pipelineBullets.innerHTML = data.bullets.map(bullet => `
-          <li class="panel-bullet-item">
-            <div class="panel-bullet-icon">✓</div>
-            <span>${bullet}</span>
-          </li>
-        `).join('');
+      const detailPanel = document.getElementById('pipelineDetailPanel');
 
-        pipelineStatVal1.textContent = data.stat1Val;
-        pipelineStatLbl1.textContent = data.stat1Lbl;
-        pipelineStatVal2.textContent = data.stat2Val;
-        pipelineStatLbl2.textContent = data.stat2Lbl;
+      if (data && pipelinePanelTitle) {
+        if (detailPanel) {
+          detailPanel.style.opacity = '0.3';
+          detailPanel.style.transform = 'translateY(6px)';
+          detailPanel.style.transition = 'opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)';
+        }
+
+        setTimeout(() => {
+          pipelinePanelTitle.textContent = data.title;
+          if (pipelinePanelDesc) pipelinePanelDesc.textContent = data.desc;
+          
+          if (pipelineBullets) {
+            pipelineBullets.innerHTML = data.bullets.map(bullet => `
+              <li class="panel-bullet-item">
+                <div class="panel-bullet-icon">✓</div>
+                <span>${bullet}</span>
+              </li>
+            `).join('');
+          }
+
+          if (pipelineStatVal1) pipelineStatVal1.textContent = data.stat1Val;
+          if (pipelineStatLbl1) pipelineStatLbl1.textContent = data.stat1Lbl;
+          if (pipelineStatVal2) pipelineStatVal2.textContent = data.stat2Val;
+          if (pipelineStatLbl2) pipelineStatLbl2.textContent = data.stat2Lbl;
+
+          if (detailPanel) {
+            detailPanel.style.opacity = '1';
+            detailPanel.style.transform = 'translateY(0)';
+          }
+        }, 90);
+      }
+    };
+
+    // Trigger on both HOVER (mouseenter) and CLICK
+    card.addEventListener('mouseenter', () => handleStageSelect());
+    card.addEventListener('click', () => handleStageSelect(true));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleStageSelect(true);
       }
     });
   });

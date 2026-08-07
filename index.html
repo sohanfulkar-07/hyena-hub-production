@@ -108,8 +108,15 @@
 
       <div class="pipeline-grid fade-in-up delay-1">
         <!-- Stage 1: Genesis -->
-        <div class="pipeline-card active" data-stage="1">
-          <div class="pipeline-stage-number">01</div>
+        <div class="pipeline-card" data-stage="1" tabindex="0" role="button" aria-pressed="false">
+          <div class="pipeline-card-header">
+            <div class="pipeline-stage-number">01</div>
+            <div class="pipeline-card-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
           <h3 class="pipeline-card-title">Genesis</h3>
           <div class="pipeline-card-sub">Development & Packaging</div>
           <p class="pipeline-card-desc">
@@ -123,8 +130,15 @@
         </div>
 
         <!-- Stage 2: Execution -->
-        <div class="pipeline-card" data-stage="2">
-          <div class="pipeline-stage-number">02</div>
+        <div class="pipeline-card" data-stage="2" tabindex="0" role="button" aria-pressed="false">
+          <div class="pipeline-card-header">
+            <div class="pipeline-stage-number">02</div>
+            <div class="pipeline-card-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
           <h3 class="pipeline-card-title">Execution</h3>
           <div class="pipeline-card-sub">Production & Craft</div>
           <p class="pipeline-card-desc">
@@ -138,8 +152,15 @@
         </div>
 
         <!-- Stage 3: Distribution -->
-        <div class="pipeline-card" data-stage="3">
-          <div class="pipeline-stage-number">03</div>
+        <div class="pipeline-card" data-stage="3" tabindex="0" role="button" aria-pressed="false">
+          <div class="pipeline-card-header">
+            <div class="pipeline-stage-number">03</div>
+            <div class="pipeline-card-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
           <h3 class="pipeline-card-title">Distribution</h3>
           <div class="pipeline-card-sub">Syndication & Theater</div>
           <p class="pipeline-card-desc">
@@ -156,34 +177,26 @@
       <!-- Detail Panel -->
       <div class="pipeline-detail-panel fade-in-up delay-2" id="pipelineDetailPanel">
         <div>
-          <h3 class="panel-title" id="pipelinePanelTitle">Stage 01: Genesis & Intellectual Property Design</h3>
+          <h3 class="panel-title" id="pipelinePanelTitle">Explore Production Stages</h3>
           <p class="section-subtitle" id="pipelinePanelDesc">
-            Architecting world-class screenplays, narrative bibles, and visual treatments calibrated for prestigious global festivals and international co-production partners.
+            Hover or click on any of the 3 production stages above (Genesis, Execution, Distribution) to reveal detailed workflow bibles, curation metrics, and technology specifications.
           </p>
           <ul class="panel-bullets" id="pipelineBullets">
             <li class="panel-bullet-item">
-              <div class="panel-bullet-icon">✓</div>
-              <span>In-depth screenplay development with award-winning dramaturgs.</span>
-            </li>
-            <li class="panel-bullet-item">
-              <div class="panel-bullet-icon">✓</div>
-              <span>World-building visual bibles & high-concept pitch packaging.</span>
-            </li>
-            <li class="panel-bullet-item">
-              <div class="panel-bullet-icon">✓</div>
-              <span>Legal chain-of-title verification & international optioning.</span>
+              <div class="panel-bullet-icon">✦</div>
+              <span>Interactive stage inspection & real-time metric rendering.</span>
             </li>
           </ul>
         </div>
 
         <div class="panel-stat-box">
           <div class="stat-item">
-            <div class="stat-value" id="pipelineStatVal1">12 - 18 Wks</div>
-            <div class="stat-label" id="pipelineStatLbl1">Development Cycle</div>
+            <div class="stat-value" id="pipelineStatVal1">3 Stages</div>
+            <div class="stat-label" id="pipelineStatLbl1">End-to-End Pipeline</div>
           </div>
           <div class="stat-item">
-            <div class="stat-value" id="pipelineStatVal2">Top 1%</div>
-            <div class="stat-label" id="pipelineStatLbl2">Script Curation Rate</div>
+            <div class="stat-value" id="pipelineStatVal2">Interactive</div>
+            <div class="stat-label" id="pipelineStatLbl2">Hover or Click Box</div>
           </div>
         </div>
       </div>

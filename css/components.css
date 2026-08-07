@@ -297,6 +297,7 @@ h1, h2, h3, h4, .font-heading {
   cursor: pointer;
   transition: all var(--transition-smooth);
   position: relative;
+  user-select: none;
 }
 
 .pipeline-card:hover, .pipeline-card.active {
@@ -305,22 +306,80 @@ h1, h2, h3, h4, .font-heading {
   box-shadow: var(--shadow-gold);
 }
 
+.pipeline-card:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 4px;
+}
+
 .pipeline-card.active::before {
   content: "";
   position: absolute;
   top: 0; left: 0; width: 100%; height: 3px;
   background: linear-gradient(90deg, var(--color-gold), var(--color-gold-bright));
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+/* Active Downward Pointer Arrow */
+.pipeline-card.active::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--color-gold);
+  z-index: 10;
+  transition: all var(--transition-smooth);
+}
+
+.pipeline-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .pipeline-stage-number {
   font-family: var(--font-heading);
   font-size: 2.5rem;
   color: var(--color-gold-muted);
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+  transition: color var(--transition-smooth);
 }
 
-.pipeline-card.active .pipeline-stage-number {
+.pipeline-card.active .pipeline-stage-number,
+.pipeline-card:hover .pipeline-stage-number {
   color: var(--color-gold);
+}
+
+.pipeline-card-arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pipeline-card:hover .pipeline-card-arrow {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  transform: translateX(4px);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+}
+
+.pipeline-card.active .pipeline-card-arrow {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-obsidian);
+  transform: rotate(90deg);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
 }
 
 .pipeline-card-title {
@@ -1143,6 +1202,14 @@ body.theater-mode-active .toggle-switch::after {
   font-family: var(--font-heading);
   font-size: 1.5rem;
   color: var(--color-gold);
+  overflow: hidden;
+}
+
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .team-name {
