@@ -24,9 +24,18 @@ h1, h2, h3, h4, .font-heading {
   -webkit-text-fill-color: transparent;
 }
 
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .section-label {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -47,6 +56,9 @@ h1, h2, h3, h4, .font-heading {
   font-size: clamp(2.2rem, 5vw, 3.8rem);
   margin-bottom: 1.5rem;
   max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .section-subtitle {
@@ -54,6 +66,9 @@ h1, h2, h3, h4, .font-heading {
   color: var(--color-text-muted);
   max-width: 640px;
   line-height: 1.7;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 /* Primary Editorial Buttons */
@@ -844,6 +859,62 @@ body.theater-mode-active .toggle-switch::after {
   margin: 3rem auto 0;
 }
 
+/* Gmail Highlight Box */
+.gmail-highlight-box {
+  background: var(--color-charcoal);
+  border: 1px solid var(--color-border-gold);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.gmail-badge-icon {
+  font-size: 2.2rem;
+}
+
+.gmail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-grow: 1;
+}
+
+.gmail-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+}
+
+.gmail-address {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  color: var(--color-gold);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--transition-fast);
+}
+
+.gmail-address:hover {
+  color: var(--color-gold-bright);
+}
+
+.gmail-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.btn-sm {
+  padding: 10px 20px;
+  font-size: 0.78rem;
+}
+
 .wizard-progress {
   display: flex;
   justify-content: space-between;
@@ -1187,6 +1258,7 @@ body.theater-mode-active .toggle-switch::after {
 .team-card:hover {
   border-color: var(--color-gold);
   transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.12);
 }
 
 .team-avatar {
@@ -1276,7 +1348,7 @@ body.theater-mode-active .toggle-switch::after {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  grid-template-columns: 2fr 1fr;
   gap: 3rem;
   margin-bottom: 4rem;
 }
@@ -1339,4 +1411,57 @@ body.theater-mode-active .toggle-switch::after {
   align-items: center;
   font-size: 0.8rem;
   color: var(--color-text-dark);
+}
+
+/* --------------------------------------------------------------------------
+   ABOUT HERO FULL BACKGROUND VIDEO (100VH FULL SCREEN)
+   -------------------------------------------------------------------------- */
+.about-hero-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 2rem 4rem;
+  overflow: hidden;
+  background: var(--color-obsidian);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-hero-media-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.about-hero-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.5) contrast(1.1);
+}
+
+.about-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(11, 11, 12, 0.3) 0%, var(--color-obsidian) 90%);
+  z-index: 2;
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
 }

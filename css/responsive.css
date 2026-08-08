@@ -15,18 +15,29 @@
 
 .section-header {
   margin-bottom: 4rem;
-}
-
-.section-header.center {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+.section-header .section-label,
 .section-header.center .section-label {
   justify-content: center;
 }
 
+.section-header .section-title,
+.section-header.center .section-title {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.section-header .section-subtitle,
 .section-header.center .section-subtitle {
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 /* Tablet & Smaller Screens (< 1024px) */
@@ -45,7 +56,7 @@
   }
 
   .span-7, .span-5, .span-4 {
-    grid-column: span 12;
+    grid-column: span 1;
   }
 
   .theater-syndication-features {

@@ -118,9 +118,14 @@ export function initPortfolio() {
     });
   });
 
-  // 2. Slate Category Filter
+  // 2. Slate Category Filter — FIXED: smooth CSS transitions instead of display:none
   const filterBtns = document.querySelectorAll('.filter-btn');
   const slateCards = document.querySelectorAll('.slate-card');
+
+  // Initialize all cards as visible
+  slateCards.forEach(card => {
+    card.classList.add('filter-visible');
+  });
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -129,14 +134,25 @@ export function initPortfolio() {
 
       const category = btn.getAttribute('data-filter');
 
-      slateCards.forEach(card => {
+      slateCards.forEach((card, index) => {
         const cardCat = card.getAttribute('data-category');
-        if (category === 'all' || cardCat === category) {
+        const shouldShow = category === 'all' || cardCat === category;
+
+        if (shouldShow) {
+          // First make visible in layout, then animate in
+          card.classList.remove('filter-hidden');
           card.style.display = 'flex';
-          setTimeout(() => card.style.opacity = '1', 50);
+          // Stagger the reveal for a cinematic feel
+          setTimeout(() => {
+            card.classList.add('filter-visible');
+          }, index * 60);
         } else {
-          card.style.opacity = '0';
-          card.style.display = 'none';
+          // Fade out first, then hide from layout
+          card.classList.remove('filter-visible');
+          card.classList.add('filter-hidden');
+          setTimeout(() => {
+            card.style.display = 'none';
+          }, 400); // Match the CSS transition duration
         }
       });
     });
@@ -145,6 +161,7 @@ export function initPortfolio() {
   // 3. Case Study Modal Dialog System
   const modalBackdrop = document.getElementById('modalBackdrop');
   const modalCloseBtn = document.getElementById('modalCloseBtn');
+  const closeModalActionBtn = document.getElementById('closeModalActionBtn');
   const caseStudyBtns = document.querySelectorAll('.open-case-study');
 
   const modalTitle = document.getElementById('modalTitle');
@@ -199,7 +216,7 @@ export function initPortfolio() {
     },
     "silent-sovereigns": {
       title: "Silent Sovereigns",
-      category: "TV & Web Series | Political Drama",
+      category: "Web Series | Political Drama",
       logline: "Inside the secretive corridors of international central banking and shadow diplomacy during a global fiscal crisis.",
       director: "Showrunner: Arthur Pendelton",
       format: "4K HDR Dolby Vision",
@@ -233,7 +250,10 @@ export function initPortfolio() {
     });
   });
 
+  // Wire up BOTH close buttons (was a bug: closeModalActionBtn was never connected)
   modalCloseBtn?.addEventListener('click', closeModal);
+  closeModalActionBtn?.addEventListener('click', closeModal);
+  
   modalBackdrop?.addEventListener('click', (e) => {
     if (e.target === modalBackdrop) closeModal();
   });

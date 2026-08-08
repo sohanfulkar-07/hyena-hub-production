@@ -1,105 +1,98 @@
 /**
- * THE HYENA HUB — Creator Intake & Contact Wizard Module
+ * THE HYENA HUB — Direct Contact & Webmail Module
  */
 
-import { generateRandomID, formatFileSize } from './utils.js';
+import { generateRandomID } from './utils.js';
 
 export function initContactWizard() {
-  const stepNodes = document.querySelectorAll('.wizard-step-node');
-  const stepPanels = document.querySelectorAll('.form-step-panel');
-  const progressLineFill = document.getElementById('progressLineFill');
+  const directForm = document.getElementById('directContactForm');
+  const btnCopyGmail = document.getElementById('btnCopyGmail');
+  const confirmPanel = document.getElementById('contactConfirmPanel');
+  const ticketRef = document.getElementById('contactTicketRef');
+  const btnReset = document.getElementById('btnResetContactForm');
+  const btnConfirmGmailWeb = document.getElementById('btnConfirmGmailWeb');
+  const btnConfirmOutlookWeb = document.getElementById('btnConfirmOutlookWeb');
 
-  const btnNext1 = document.getElementById('btnNext1');
-  const btnPrev2 = document.getElementById('btnPrev2');
-  const btnNext2 = document.getElementById('btnNext2');
-  const btnPrev3 = document.getElementById('btnPrev3');
-  const btnNext3 = document.getElementById('btnNext3');
-  const btnPrev4 = document.getElementById('btnPrev4');
-  const creatorForm = document.getElementById('creatorIntakeForm');
-  const confirmationTicket = document.getElementById('confirmationTicket');
+  const GMAIL_ADDRESS = 'Thehyenahub@gmail.com';
 
-  if (!creatorForm) return;
+  // 1. Copy Email to Clipboard
+  if (btnCopyGmail) {
+    btnCopyGmail.addEventListener('click', async () => {
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(GMAIL_ADDRESS);
+        } else {
+          // Fallback
+          const tempInput = document.createElement('input');
+          tempInput.value = GMAIL_ADDRESS;
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          document.execCommand('copy');
+          document.body.removeChild(tempInput);
+        }
 
-  let currentStep = 1;
+        const originalText = btnCopyGmail.textContent;
+        btnCopyGmail.textContent = '✓ Copied!';
+        btnCopyGmail.style.borderColor = 'var(--color-gold)';
+        btnCopyGmail.style.color = 'var(--color-gold)';
 
-  function updateStepUI(targetStep) {
-    currentStep = targetStep;
-
-    // Update Step Nodes
-    stepNodes.forEach(node => {
-      const nodeStep = parseInt(node.getAttribute('data-step'));
-      node.classList.remove('active', 'completed');
-      if (nodeStep === currentStep) {
-        node.classList.add('active');
-      } else if (nodeStep < currentStep) {
-        node.classList.add('completed');
+        setTimeout(() => {
+          btnCopyGmail.textContent = originalText;
+          btnCopyGmail.style.borderColor = '';
+          btnCopyGmail.style.color = '';
+        }, 2500);
+      } catch (err) {
+        console.warn('Failed to copy email: ', err);
       }
     });
-
-    // Update Progress Bar Line
-    const fillPercent = ((currentStep - 1) / (stepNodes.length - 1)) * 100;
-    if (progressLineFill) {
-      progressLineFill.style.width = `${fillPercent}%`;
-    }
-
-    // Update Form Panels
-    stepPanels.forEach(panel => panel.classList.remove('active'));
-    const activePanel = document.getElementById(`stepPanel${currentStep}`);
-    if (activePanel) activePanel.classList.add('active');
   }
 
-  btnNext1?.addEventListener('click', () => {
-    const creatorName = document.getElementById('creatorName')?.value;
-    const creatorEmail = document.getElementById('creatorEmail')?.value;
-    if (!creatorName || !creatorEmail) {
-      alert('Please provide your full name and business email before proceeding.');
-      return;
-    }
-    updateStepUI(2);
-  });
+  // 2. Direct Contact Form Submission -> Direct Webmail Launcher
+  if (directForm) {
+    directForm.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-  btnPrev2?.addEventListener('click', () => updateStepUI(1));
-  btnNext2?.addEventListener('click', () => updateStepUI(3));
-  btnPrev3?.addEventListener('click', () => updateStepUI(2));
-  btnNext3?.addEventListener('click', () => updateStepUI(4));
-  btnPrev4?.addEventListener('click', () => updateStepUI(3));
+      const name = document.getElementById('contactName')?.value || '';
+      const email = document.getElementById('contactEmail')?.value || '';
+      const inquiry = document.getElementById('inquiryType')?.value || 'General Inquiry';
+      const company = document.getElementById('contactCompany')?.value || '';
+      const message = document.getElementById('contactMessage')?.value || '';
 
-  // File Upload Drag & Drop Simulation
-  const dropzone = document.getElementById('uploadDropzone');
-  const fileInput = document.getElementById('pitchFileInput');
-  const filePreviewArea = document.getElementById('filePreviewArea');
+      const subjectRaw = `[${inquiry}] Inquiry from ${name}${company ? ' (' + company + ')' : ''}`;
+      const bodyRaw = `Name: ${name}\nEmail: ${email}\nCompany/Agency: ${company || 'N/A'}\nInquiry Type: ${inquiry}\n\nMessage:\n${message}`;
 
-  dropzone?.addEventListener('click', () => fileInput?.click());
+      const subject = encodeURIComponent(subjectRaw);
+      const body = encodeURIComponent(bodyRaw);
 
-  fileInput?.addEventListener('change', (e) => {
-    const files = e.target.files;
-    if (files.length > 0 && filePreviewArea) {
-      const file = files[0];
-      filePreviewArea.innerHTML = `
-        <div style="background:var(--color-charcoal); border:1px solid var(--color-border-gold); padding:1rem; border-radius:var(--radius-sm); margin-top:1rem; display:flex; justify-content:space-between; align-items:center;">
-          <div>
-            <strong style="color:var(--color-white);">${file.name}</strong>
-            <span style="font-size:0.75rem; color:var(--color-text-muted); margin-left:8px;">(${formatFileSize(file.size)})</span>
-          </div>
-          <span style="color:var(--color-gold); font-size:0.8rem; font-weight:600;">✓ Encrypted Ready</span>
-        </div>
-      `;
-    }
-  });
+      // Direct Webmail URLs (Opens user's active browser-login account instead of OS Microsoft Mail app)
+      const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${GMAIL_ADDRESS}&su=${subject}&body=${body}`;
+      const outlookWebUrl = `https://outlook.live.com/mail/0/deeplink/compose?to=${GMAIL_ADDRESS}&subject=${subject}&body=${body}`;
 
-  // Form Submission
-  creatorForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+      // Update confirmation links
+      if (btnConfirmGmailWeb) btnConfirmGmailWeb.href = gmailWebUrl;
+      if (btnConfirmOutlookWeb) btnConfirmOutlookWeb.href = outlookWebUrl;
 
-    const trackingID = generateRandomID('HYN', '2026');
-    if (confirmationTicket) {
-      confirmationTicket.textContent = trackingID;
-    }
+      // Generate Reference Ticket
+      const refID = generateRandomID('HYN', 'GMAIL');
+      if (ticketRef) ticketRef.textContent = refID;
 
-    stepPanels.forEach(p => p.classList.remove('active'));
-    const confirmPanel = document.getElementById('stepPanelConfirm');
-    if (confirmPanel) confirmPanel.classList.add('active');
+      // Open directly in web Gmail (currently logged-in account in browser)
+      window.open(gmailWebUrl, '_blank');
 
-    if (progressLineFill) progressLineFill.style.width = '100%';
-  });
+      // Show confirmation screen
+      directForm.style.display = 'none';
+      if (confirmPanel) confirmPanel.style.display = 'block';
+    });
+  }
+
+  // 3. Reset Form Button
+  if (btnReset) {
+    btnReset.addEventListener('click', () => {
+      if (directForm) {
+        directForm.reset();
+        directForm.style.display = 'block';
+      }
+      if (confirmPanel) confirmPanel.style.display = 'none';
+    });
+  }
 }

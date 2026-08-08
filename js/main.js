@@ -14,7 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initPortfolio();
   initContactWizard();
 
-  // Private Theater Light Switch & Video Player State
+  // ========================================================================
+  // PRIVATE THEATER LIGHT SWITCH & VIDEO PLAYER STATE
+  // ========================================================================
   const theaterToggle = document.getElementById('theaterLightToggle');
   const theaterPlayBtn = document.getElementById('theaterPlayBtn');
   const theaterOverlay = document.getElementById('theaterOverlay');
@@ -60,4 +62,27 @@ document.addEventListener('DOMContentLoaded', () => {
     isMuted = !isMuted;
     muteBtn.style.color = isMuted ? 'var(--color-gold)' : 'var(--color-white)';
   });
+
+  // ========================================================================
+  // BACK TO TOP BUTTON
+  // ========================================================================
+  const backToTop = document.createElement('button');
+  backToTop.className = 'back-to-top';
+  backToTop.setAttribute('aria-label', 'Back to top');
+  backToTop.innerHTML = `<svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>`;
+  document.body.appendChild(backToTop);
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  });
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+
 });

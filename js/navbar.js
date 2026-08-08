@@ -10,6 +10,20 @@ export function initNavbar() {
 
   if (!navbar) return;
 
+  // Store page-level active links so scroll-spy doesn't override them on subpages
+  const pageActiveLinks = document.querySelectorAll('.nav-link.active');
+  const isHomePage = window.location.pathname.endsWith('index.html') || 
+                     window.location.pathname.endsWith('/') ||
+                     window.location.pathname === '';
+
+  // Create drawer overlay backdrop
+  let drawerOverlay = document.querySelector('.drawer-overlay');
+  if (!drawerOverlay) {
+    drawerOverlay = document.createElement('div');
+    drawerOverlay.className = 'drawer-overlay';
+    document.body.appendChild(drawerOverlay);
+  }
+
   // Scroll listener for sticky translucent navbar
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) {
@@ -17,24 +31,45 @@ export function initNavbar() {
     } else {
       navbar.classList.remove('scrolled');
     }
-    highlightNavOnScroll();
+    // Only run scroll-spy highlighting on the homepage where sections map to nav links
+    if (isHomePage) {
+      highlightNavOnScroll();
+    }
   });
 
-  // Toggle mobile drawer
+  // Toggle mobile drawer with scroll lock and overlay
+  function openDrawer() {
+    mobileDrawer?.classList.add('open');
+    hamburgerBtn?.classList.add('active');
+    drawerOverlay?.classList.add('active');
+    document.body.classList.add('scroll-locked');
+  }
+
+  function closeDrawer() {
+    mobileDrawer?.classList.remove('open');
+    hamburgerBtn?.classList.remove('active');
+    drawerOverlay?.classList.remove('active');
+    document.body.classList.remove('scroll-locked');
+  }
+
   hamburgerBtn?.addEventListener('click', () => {
-    mobileDrawer?.classList.toggle('open');
-    hamburgerBtn.classList.toggle('active');
+    const isOpen = mobileDrawer?.classList.contains('open');
+    if (isOpen) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
   });
+
+  // Close drawer on overlay click
+  drawerOverlay?.addEventListener('click', closeDrawer);
 
   // Close mobile drawer when clicking links
   navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileDrawer?.classList.remove('open');
-      hamburgerBtn?.classList.remove('active');
-    });
+    link.addEventListener('click', closeDrawer);
   });
 
-  // Highlight current section in navbar
+  // Highlight current section in navbar (only on homepage)
   function highlightNavOnScroll() {
     const sections = document.querySelectorAll('section[id]');
     const scrollY = window.pageYOffset;
