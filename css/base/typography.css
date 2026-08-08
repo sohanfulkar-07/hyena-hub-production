@@ -1,0 +1,32 @@
+/* THE HYENA HUB — TYPOGRAPHY SYSTEM */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading, 'Playfair Display', serif);
+  color: var(--color-white, #FFFFFF);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.heading-xl {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  letter-spacing: -0.02em;
+}
+
+.heading-lg {
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+}
+
+.heading-md {
+  font-size: clamp(1.4rem, 2vw, 2.2rem);
+}
+
+.font-mono-custom {
+  font-family: monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FFFFFF 0%, #D4B44A 50%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

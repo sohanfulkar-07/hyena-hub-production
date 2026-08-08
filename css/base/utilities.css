@@ -1,0 +1,22 @@
+/* THE HYENA HUB — UTILITY CLASSES */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg, 24px);
+}
+
+.text-gold {
+  color: var(--color-gold, #D4B44A);
+}
+
+.bg-obsidian {
+  background-color: var(--color-obsidian, #060608);
+}

@@ -1,29 +1,20 @@
 [
   {
-    "name": "Saurabh Kumar",
-    "role": "Founder",
-    "initials": "SK",
-    "image": "assets/images/team/saurabh-kumar.jpg",
-    "bio": "“Camera sees what eyes don’t”. I make films to encapture a wholesome picture rather images from individual eyes to show the prospective behind eyes."
-  },
-  {
     "name": "Amartya Raj",
-    "role": "Co-Founder",
-    "initials": "AR",
+    "role": "Founder & Creative Director",
     "image": "assets/images/team/amartya-raj.jpg",
-    "bio": "Filmmaker and Co-Founder of this and combines hands-on creative direction with entrepreneurial leadership to craft unforgettable visual stories and shape the studio’s overarching vision."
+    "bio": "Visionary showrunner leading film acquisition, narrative strategy, and international co-financing."
   },
   {
     "name": "Pratik Pandey",
-    "role": "CEO",
-    "initials": "PP",
+    "role": "Head of Global Syndication",
     "image": "assets/images/team/pratik-pandey.jpg",
-    "bio": "They say the universe is endless — and so are the stories we tell about it. Storytelling is an art we are born with, a voice that shapes our reality. Here, we give your expressions a medium to turn intuition into creation. Let us be drivers, not passengers, on this spaceship of the Milky Way. Together, let’s shape reality.\n\nWelcome to the future."
+    "bio": "Architect of direct-to-platform OTT licensing and international theatrical sales networks."
   },
   {
-    "name": "Sohan Fulkar",
-    "role": "Technical Manager",
-    "initials": "SF",
-    "bio": "Responsible for managing technical operations, equipment, and production technology. Ensures smooth coordination between technical teams and efficient execution of production activities."
+    "name": "Saurabh Kumar",
+    "role": "Chief Technology & VFX Officer",
+    "image": "assets/images/team/saurabh-kumar.jpg",
+    "bio": "Directs virtual production pipelines, forensic DRM, and high-end visual bibles."
   }
 ]
