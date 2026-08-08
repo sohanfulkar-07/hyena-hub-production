@@ -1,11 +1,9 @@
 /* ==========================================================================
    THE HYENA HUB — OFFICIAL DESIGN SYSTEM & DESIGN TOKENS
+   Cinematic / Hyena-inspired visual language
    ========================================================================== */
 
 :root {
-  /* ------------------------------------------------------------------------
-     1. COLORS
-     ------------------------------------------------------------------------ */
   --color-obsidian: #0A0A0C;
   --color-ivory: #F5F5F7;
   --color-champagne-gold: #D4B44A;
@@ -13,45 +11,47 @@
   --color-muted-grey: #A1A1AA;
   --color-cinematic-black: #060608;
 
-  /* Color Translucency & Surface Utilities */
-  --color-obsidian-glass: rgba(10, 10, 12, 0.75);
+  --color-obsidian-glass: rgba(10, 10, 12, 0.72);
   --color-charcoal-surface: #121215;
   --color-gold-glow: rgba(212, 175, 55, 0.35);
   --color-border-glass: rgba(255, 255, 255, 0.1);
   --color-border-gold: rgba(212, 175, 55, 0.25);
 
-  /* ------------------------------------------------------------------------
-     2. TYPOGRAPHY
-     ------------------------------------------------------------------------ */
-  --font-display: 'Space Grotesk', 'Playfair Display', sans-serif;
+  /* Backward-compatible aliases used by the existing components */
+  --color-white: var(--color-ivory);
+  --color-gold: var(--color-champagne-gold);
+  --color-gold-bright: var(--color-champagne-bright);
+  --color-gold-muted: rgba(212, 180, 74, 0.55);
+  --color-text-muted: var(--color-muted-grey);
+  --color-border: var(--color-border-glass);
+  --color-charcoal: var(--color-charcoal-surface);
+  --color-charcoal-light: #1A1A1E;
+  --color-obsidian-translucent: var(--color-obsidian-glass);
+  --color-obsidian-surface: #101014;
+  --shadow-gold: 0 20px 55px rgba(212, 175, 55, 0.14);
+  --shadow-obsidian: 0 30px 80px rgba(0, 0, 0, 0.75);
+
+  --font-display: 'Playfair Display', Georgia, serif;
   --font-heading: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-metadata: monospace;
+  --font-metadata: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 
-  /* ------------------------------------------------------------------------
-     3. SPACING
-     ------------------------------------------------------------------------ */
-  --spacing-section: clamp(4rem, 8vw, 7.5rem);
+  --spacing-section: clamp(5rem, 10vw, 9rem);
   --spacing-container: 1280px;
   --spacing-card: 2rem;
   --spacing-micro: 0.75rem;
 
-  /* ------------------------------------------------------------------------
-     4. MOTION & TRANSITIONS
-     ------------------------------------------------------------------------ */
   --transition-fast: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-smooth: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* ------------------------------------------------------------------------
-     5. BORDER RADII & SHADOWS
-     ------------------------------------------------------------------------ */
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  /* Sharper editorial corners suit the film-studio aesthetic */
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
   --radius-full: 9999px;
 
-  --shadow-gold-glow: 0 0 30px rgba(212, 175, 55, 0.35);
+  --shadow-gold-glow: 0 0 30px rgba(212, 175, 55, 0.25);
   --shadow-obsidian-card: 0 30px 80px rgba(0, 0, 0, 0.85);
 }
 
@@ -64,7 +64,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  background-color: var(--color-cinematic-black);
+  background: var(--color-cinematic-black);
   color: var(--color-ivory);
   font-family: var(--font-body);
   overflow-x: hidden;
@@ -74,7 +74,7 @@ html {
 
 body {
   line-height: 1.6;
-  background-color: var(--color-cinematic-black);
+  background: var(--color-cinematic-black);
   color: var(--color-ivory);
   min-height: 100vh;
   position: relative;
