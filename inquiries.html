@@ -569,12 +569,30 @@
   </footer>
 
   <!-- SCRIPT FOR LIVE SYNCHRONIZED TYPING & DISPATCH ENGINE -->
-  <script type="module">
-    import { initNavbar } from './js/navbar.js';
-    import { generateRandomID } from './js/utils.js';
-
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
-      initNavbar();
+      // Navbar Mobile & Scroll Handler
+      const navbar = document.getElementById('navbar');
+      const hamburgerBtn = document.getElementById('hamburgerBtn');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+          navbar?.classList.add('scrolled');
+        } else {
+          navbar?.classList.remove('scrolled');
+        }
+      });
+
+      hamburgerBtn?.addEventListener('click', () => {
+        mobileDrawer?.classList.toggle('open');
+        hamburgerBtn?.classList.toggle('active');
+      });
+
+      function generateRandomID(prefix = 'HYN', type = 'DISPATCH') {
+        const randNum = Math.floor(1000 + Math.random() * 9000);
+        return `${prefix}-${type}-${randNum}`;
+      }
 
       const GMAIL_ADDRESS = 'Thehyenahub@gmail.com';
 
