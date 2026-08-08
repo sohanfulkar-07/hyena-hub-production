@@ -1,0 +1,5 @@
+# The Hyena Hub — Robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://thehyenahub.com/sitemap.xml
