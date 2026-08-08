@@ -1,167 +1,321 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Executive Dispatch Console — The Hyena Hub</title>
-  <meta name="description" content="Studio-grade interactive email & executive dispatch console for film acquisition, co-production, and direct studio messaging at The Hyena Hub.">
+  <title>Direct Executive Inquiries — The Hyena Hub</title>
+  <meta name="description" content="Studio-grade interactive email & executive dispatch console for film acquisition, co-production, and direct studio messaging at The Hyena Hub. Contact us at Thehyenahub@gmail.com.">
   
-  <!-- Google Fonts (Space Grotesk, Inter, Playfair Display) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Tailwind CSS CDN (v3) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            obsidian: '#060608',
-            indigo: {
-              cyber: '#4F46E5',
-            },
-            champagne: {
-              DEFAULT: '#F59E0B',
-              bright: '#FDE047',
-              gold: '#D4B44A'
-            }
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            space: ['"Space Grotesk"', 'sans-serif'],
-            serif: ['"Playfair Display"', 'serif'],
-          },
-          animation: {
-            'float-slow-1': 'floatSphere1 14s ease-in-out infinite alternate',
-            'float-slow-2': 'floatSphere2 18s ease-in-out infinite alternate',
-            'shimmer': 'shimmer 2.5s infinite',
-            'wave-pulse': 'wavePulse 2s ease-in-out infinite',
-          },
-          keyframes: {
-            floatSphere1: {
-              '0%': { transform: 'translate(0px, 0px) scale(1)' },
-              '50%': { transform: 'translate(60px, 80px) scale(1.15)' },
-              '100%': { transform: 'translate(-40px, 40px) scale(0.95)' },
-            },
-            floatSphere2: {
-              '0%': { transform: 'translate(0px, 0px) scale(1)' },
-              '50%': { transform: 'translate(-80px, -60px) scale(1.2)' },
-              '100%': { transform: 'translate(50px, -30px) scale(0.9)' },
-            },
-            shimmer: {
-              '0%': { transform: 'translateX(-100%)' },
-              '100%': { transform: 'translateX(100%)' }
-            },
-            wavePulse: {
-              '0%, 100%': { border: '1px dashed rgba(245, 158, 11, 0.3)', opacity: 0.7 },
-              '50%': { border: '1px dashed rgba(245, 158, 11, 0.9)', opacity: 1 },
-            }
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- React 18 & Babel CDN -->
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
   <style>
-    body {
-      background-color: #060608;
-      color: #F3F4F6;
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-    }
-
-    /* High-blur Glassmorphism */
-    .glass-console-panel {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(32px);
-      -webkit-backdrop-filter: blur(32px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85);
-    }
-
-    /* Holographic Memo Card */
-    .holographic-card {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(79, 70, 229, 0.08) 50%, rgba(245, 158, 11, 0.05) 100%);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(245, 158, 11, 0.25);
-      box-shadow: 0 0 40px rgba(79, 70, 229, 0.15), inset 0 0 25px rgba(255, 255, 255, 0.03);
-    }
-
-    /* Shimmer Effect */
-    .shimmer-btn-wrap {
+    /* ==========================================================================
+       EXECUTIVE DISPATCH CONSOLE NATIVE STYLES
+       ========================================================================== */
+    .dispatch-page-bg {
       position: relative;
+      min-height: 100vh;
+      width: 100%;
+      background-color: #060608;
+      padding: 8rem 1.5rem 5rem;
       overflow: hidden;
     }
-    .shimmer-btn-wrap::after {
-      content: "";
+
+    /* Ambient Drifting Aura Spheres */
+    .aura-sphere-1 {
       position: absolute;
-      top: 0; right: 0; bottom: 0; left: 0;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-      transform: translateX(-100%);
-    }
-    .shimmer-btn-wrap:hover::after {
-      animation: shimmer 1.5s ease-in-out infinite;
+      top: 15%;
+      left: 5%;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79, 70, 229, 0.2) 0%, rgba(6, 6, 8, 0) 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 1;
+      animation: floatAura1 14s ease-in-out infinite alternate;
     }
 
-    /* Floating Inputs */
-    .floating-field-wrap {
-      position: relative;
+    .aura-sphere-2 {
+      position: absolute;
+      bottom: 15%;
+      right: 5%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.18) 0%, rgba(6, 6, 8, 0) 70%);
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 1;
+      animation: floatAura2 18s ease-in-out infinite alternate;
     }
-    .console-input {
-      width: 100%;
-      background: rgba(10, 10, 12, 0.6);
+
+    @keyframes floatAura1 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(60px, 80px) scale(1.15); }
+      100% { transform: translate(-40px, 40px) scale(0.95); }
+    }
+
+    @keyframes floatAura2 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-80px, -60px) scale(1.2); }
+      100% { transform: translate(50px, -30px) scale(0.9); }
+    }
+
+    /* Glass Console Grid Container */
+    .console-glass-card {
+      position: relative;
+      z-index: 10;
+      max-width: 1280px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.025);
+      backdrop-filter: blur(35px);
+      -webkit-backdrop-filter: blur(35px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      overflow: hidden;
+    }
+
+    @media (max-width: 1024px) {
+      .console-glass-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left Panel: Holographic Memo Card */
+    .console-left-panel {
+      padding: 3rem 2.5rem;
+      background: rgba(255, 255, 255, 0.015);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 1024px) {
+      .console-left-panel {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+    }
+
+    .memo-hologram-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(79, 70, 229, 0.08) 50%, rgba(245, 158, 11, 0.05) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: var(--radius-md);
+      padding: 1.8rem;
+      box-shadow: 0 0 40px rgba(79, 70, 229, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.03);
+    }
+
+    .memo-field-label {
+      font-family: monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #9CA3AF;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .memo-field-val {
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: #FFFFFF;
+      word-break: break-word;
+    }
+
+    .memo-body-box {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      min-height: 120px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: #E5E7EB;
+      line-height: 1.6;
+    }
+
+    .typewriter-caret {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--color-gold);
+      margin-left: 2px;
+      animation: blinkCaret 1s infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blinkCaret { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* Right Panel: Interaction Studio */
+    .console-right-panel {
+      padding: 3rem 3rem;
+    }
+
+    @media (max-width: 640px) {
+      .console-right-panel {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    /* Intent Badges */
+    .intent-badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 1.8rem;
+    }
+
+    .intent-pill {
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 14px;
+      color: var(--color-text-muted);
+      padding: 8px 18px;
+      font-size: 0.78rem;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      user-select: none;
+    }
+
+    .intent-pill:hover, .intent-pill.active {
+      background: var(--color-gold);
+      border-color: var(--color-gold);
+      color: var(--color-obsidian);
+      font-weight: 700;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+      transform: translateY(-1px);
+    }
+
+    /* AI Tone Switcher */
+    .tone-switcher-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .tone-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--color-text-muted);
+      padding: 8px 12px;
+      font-size: 0.75rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      text-align: center;
+      transition: all var(--transition-fast);
+    }
+
+    .tone-pill:hover, .tone-pill.active {
+      background: rgba(79, 70, 229, 0.3);
+      border-color: #4F46E5;
+      color: #FFFFFF;
+      font-weight: 600;
+      box-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
+    }
+
+    /* Floating Slate Field */
+    .slate-field-wrap {
+      position: relative;
+      margin-bottom: 1.4rem;
+    }
+
+    .slate-input {
+      width: 100%;
+      background: rgba(10, 10, 12, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-sm);
       padding: 20px 16px 8px;
       color: #FFFFFF;
-      font-size: 0.95rem;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
       outline: none;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all var(--transition-fast);
     }
-    .console-input:focus {
-      border-color: #F59E0B;
-      box-shadow: 0 0 25px rgba(245, 158, 11, 0.25);
-      transform: scale(1.008);
-      background: rgba(18, 18, 22, 0.8);
+
+    .slate-input:focus {
+      border-color: var(--color-gold);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+      background: rgba(18, 18, 22, 0.85);
+      transform: scale(1.005);
     }
-    .console-label {
+
+    .slate-label {
       position: absolute;
       left: 16px;
       top: 15px;
-      color: #9CA3AF;
+      color: var(--color-text-muted);
       font-size: 0.85rem;
       pointer-events: none;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .console-input:focus ~ .console-label,
-    .console-input:not(:placeholder-shown) ~ .console-label {
+
+    .slate-input:focus ~ .slate-label,
+    .slate-input:not(:placeholder-shown) ~ .slate-label {
       top: 5px;
-      font-size: 0.68rem;
-      color: #F59E0B;
+      font-size: 0.65rem;
+      color: var(--color-gold);
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    /* Typewriter Caret */
-    .typewriter-cursor {
-      display: inline-block;
-      width: 2px;
-      height: 1em;
-      background: #F59E0B;
-      margin-left: 2px;
-      animation: blink 1s infinite;
-      vertical-align: middle;
+    /* Attachment Dock */
+    .attachment-dock {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      margin-bottom: 1.5rem;
     }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    .attachment-dock:hover, .attachment-dock.drag-over {
+      border-color: var(--color-gold);
+      background: rgba(212, 175, 55, 0.08);
+    }
+
+    /* Dispatch CTA Button */
+    .btn-dispatch-beam {
+      width: 100%;
+      padding: 16px 32px;
+      background: var(--color-gold);
+      color: var(--color-obsidian);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.35);
+      transition: all var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .btn-dispatch-beam:hover {
+      background: var(--color-gold-bright);
+      box-shadow: 0 0 45px rgba(212, 175, 55, 0.6);
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body>
@@ -205,374 +359,407 @@
     <a href="inquiries.html" class="btn btn-gold" style="width: 100%;">Direct Inquiries</a>
   </div>
 
-  <div id="dispatchRoot"></div>
+  <!-- DISPATCH CONSOLE PAGE WRAPPER -->
+  <div class="dispatch-page-bg">
+    <div class="aura-sphere-1"></div>
+    <div class="aura-sphere-2"></div>
 
-  <!-- REACT DISPATCH APPLICATION SCRIPT -->
-  <script type="text/babel">
-    const { useState, useEffect } = React;
+    <div class="console-glass-card fade-in-up">
+      
+      <!-- LEFT PANEL: DYNAMIC HOLOGRAPHIC EXECUTIVE MEMO -->
+      <div class="console-left-panel">
+        <div>
+          <!-- Recipient Status Header -->
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <img src="assets/images/logo/logo.png" alt="Hyena Emblem" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1px solid var(--color-gold);">
+              <div>
+                <span style="font-family: monospace; font-size: 0.65rem; color: var(--color-gold); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700;">RECIPIENT DESTINATION</span>
+                <div style="font-size: 0.95rem; font-weight: 700; color: #FFF;">TheHyenaHub Studio</div>
+              </div>
+            </div>
 
-    function DispatchConsoleApp() {
-      const [intent, setIntent] = useState('Executive Partnership');
-      const [tone, setTone] = useState('Executive Formal');
-      const [name, setName] = useState('');
-      const [email, setEmail] = useState('');
-      const [company, setCompany] = useState('');
-      const [subject, setSubject] = useState('');
-      const [message, setMessage] = useState('');
-      const [isDragging, setIsDragging] = useState(false);
-      const [fileName, setFileName] = useState('');
-      const [isDispatching, setIsDispatching] = useState(false);
-      const [isDispatched, setIsDispatched] = useState(false);
-      const [dispatchID, setDispatchID] = useState('');
+            <div style="display: flex; align-items: center; gap: 8px; padding: 4px 12px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 20px; font-family: monospace; font-size: 0.72rem; color: #10B981;">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #10B981;"></span>
+              Live Intake
+            </div>
+          </div>
+
+          <!-- Holographic Card -->
+          <div class="memo-hologram-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; font-family: monospace; font-size: 0.7rem; color: #9CA3AF; padding-bottom: 12px; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <span style="color: var(--color-gold); font-weight: 700;">EXECUTIVE DISPATCH MEMO</span>
+              <span id="memoHashVal">SECURE HASH: 889412</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <div>
+                <span class="memo-field-label">INTENT TAG</span>
+                <span class="memo-field-val" id="previewIntent" style="display: inline-block; padding: 4px 10px; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.3); border-radius: 4px; color: var(--color-gold); font-weight: 600;">
+                  Executive Partnership
+                </span>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div>
+                  <span class="memo-field-label">SENDER NAME</span>
+                  <span class="memo-field-val" id="previewName" style="color: #6B7280; font-style: italic;">Awaiting Input...</span>
+                </div>
+                <div>
+                  <span class="memo-field-label">SENDER EMAIL</span>
+                  <span class="memo-field-val" id="previewEmail" style="color: #6B7280; font-style: italic;">Awaiting Email...</span>
+                </div>
+              </div>
+
+              <div>
+                <span class="memo-field-label">SUBJECT</span>
+                <span class="memo-field-val" id="previewSubject" style="color: var(--color-gold-bright); font-size: 0.95rem; font-weight: 600;">Direct Executive Transmission</span>
+              </div>
+
+              <div>
+                <span class="memo-field-label">LIVE MEMO BODY (<span id="previewTone">Executive Formal</span>)</span>
+                <div class="memo-body-box" id="previewBody">
+                  <span style="color: #6B7280; font-style: italic;">Type your message in the studio workspace on the right to render live character preview...</span>
+                </div>
+              </div>
+
+              <div id="previewAttachmentBox" style="display: none; font-family: monospace; font-size: 0.75rem; color: var(--color-gold); pt-2; border-top: 1px solid rgba(255,255,255,0.1);">
+                📎 ATTACHED FILE: <span id="previewFileName">script_bible.pdf</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Left Footer Mailbox Info -->
+        <div style="margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; font-family: monospace; font-size: 0.75rem; color: #9CA3AF;">
+          <span>DIRECT MAILBOX: Thehyenahub@gmail.com</span>
+          <span>ENC: AES-256</span>
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL: INTERACTION STUDIO WORKSPACE -->
+      <div class="console-right-panel">
+        
+        <div id="dispatchFormState">
+          <div style="margin-bottom: 1.5rem;">
+            <span style="font-family: monospace; font-size: 0.75rem; color: var(--color-gold); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700;">DIRECT INTERACTION STUDIO</span>
+            <h1 class="section-title" style="text-align: left; font-size: 2.2rem; margin: 6px 0 0;">Executive Dispatch Console</h1>
+          </div>
+
+          <!-- Official Mailbox Quick Actions Bar -->
+          <div class="gmail-highlight-box" style="margin-bottom: 2rem; padding: 1rem 1.25rem;">
+            <div class="gmail-badge-icon" style="width: 38px; height: 38px; font-size: 1.2rem;">✉️</div>
+            <div class="gmail-info">
+              <span class="gmail-label">Studio Direct Inbox</span>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Thehyenahub@gmail.com" target="_blank" class="gmail-address" style="font-size: 0.95rem;">Thehyenahub@gmail.com</a>
+            </div>
+            <div class="gmail-actions">
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Thehyenahub@gmail.com" target="_blank" class="btn btn-gold btn-sm" style="padding: 6px 14px; font-size: 0.75rem;">Open Web Gmail</a>
+              <button type="button" class="btn btn-charcoal btn-sm" id="btnCopyConsoleMail" style="padding: 6px 14px; font-size: 0.75rem;">Copy Email</button>
+            </div>
+          </div>
+
+          <!-- SMART INTENT CATEGORY BADGES -->
+          <div style="margin-bottom: 1.5rem;">
+            <label style="font-family: monospace; font-size: 0.72rem; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">MESSAGE INTENT</label>
+            <div class="intent-badges-row">
+              <button type="button" class="intent-pill active" data-intent="Executive Partnership">✦ Executive Partnership</button>
+              <button type="button" class="intent-pill" data-intent="Studio Pitch">Studio Pitch</button>
+              <button type="button" class="intent-pill" data-intent="Urgent Direct">Urgent Direct</button>
+              <button type="button" class="intent-pill" data-intent="Private Screener">Private Screener</button>
+            </div>
+          </div>
+
+          <!-- FORM INPUTS -->
+          <form id="consoleDispatchForm">
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div class="slate-field-wrap">
+                <input type="text" id="inputName" class="slate-input" placeholder=" " required>
+                <label for="inputName" class="slate-label">Your Full Name *</label>
+              </div>
+
+              <div class="slate-field-wrap">
+                <input type="email" id="inputEmail" class="slate-input" placeholder=" " required>
+                <label for="inputEmail" class="slate-label">Your Email Address *</label>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div class="slate-field-wrap">
+                <input type="text" id="inputSubject" class="slate-input" placeholder=" " required>
+                <label for="inputSubject" class="slate-label">Transmission Subject *</label>
+              </div>
+
+              <div class="slate-field-wrap">
+                <input type="text" id="inputCompany" class="slate-input" placeholder=" ">
+                <label for="inputCompany" class="slate-label">Organization / Studio (Optional)</label>
+              </div>
+            </div>
+
+            <!-- AI TONE SWITCHER -->
+            <div style="margin-bottom: 1.25rem;">
+              <label style="font-family: monospace; font-size: 0.72rem; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px;">SELECT AI DISPATCH TONE</label>
+              <div class="tone-switcher-grid">
+                <button type="button" class="tone-pill active" data-tone="Executive Formal">Executive Formal</button>
+                <button type="button" class="tone-pill" data-tone="Concise Brief">Concise Brief</button>
+                <button type="button" class="tone-pill" data-tone="Creative Pitch">Creative Pitch</button>
+              </div>
+            </div>
+
+            <!-- MESSAGE AREA -->
+            <div class="slate-field-wrap">
+              <textarea id="inputMessage" class="slate-input" rows="4" placeholder=" " required style="resize: none;"></textarea>
+              <label for="inputMessage" class="slate-label">Executive Message *</label>
+            </div>
+
+            <!-- ATTACHMENT MAGNETIC DOCK -->
+            <div class="attachment-dock" id="attachmentDock">
+              <input type="file" id="fileAttachmentInput" style="display: none;">
+              <span id="attachmentDockText" style="font-family: monospace; font-size: 0.8rem; color: #D1D5DB; display: block; margin-bottom: 4px;">
+                📥 Click or Drag & Drop Script Bibles / Pitch Decks Here
+              </span>
+              <span style="font-family: monospace; font-size: 0.68rem; color: #6B7280; text-transform: uppercase; letter-spacing: 0.1em;">Supports PDF, DOCX, MP4, MOV (Up to 50MB)</span>
+            </div>
+
+            <!-- PRIMARY DISPATCH BUTTON -->
+            <button type="submit" class="btn-dispatch-beam" id="btnDispatchSubmit">
+              DISPATCH EXECUTIVE MEMO &rarr;
+            </button>
+
+          </form>
+        </div>
+
+        <!-- SUCCESS CONFIRMATION SCREEN -->
+        <div id="dispatchSuccessState" style="display: none; text-align: center; padding: 3rem 1rem;">
+          <div class="confirmation-icon-circle" style="width: 70px; height: 70px; font-size: 2rem; margin: 0 auto 1.5rem;">✦</div>
+          <span style="font-family: monospace; font-size: 0.75rem; color: var(--color-gold); text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700;">TRANSMISSION SENT</span>
+          <h2 class="section-title" style="font-size: 2.2rem; margin: 8px 0 1rem;">Executive Dispatch Confirmed</h2>
+          <p class="section-subtitle" style="margin: 0 auto 2rem; max-width: 480px;">
+            Your executive memo has been compiled and dispatched directly to <strong style="color: var(--color-gold);">Thehyenahub@gmail.com</strong>.
+          </p>
+
+          <div class="ticket-box" style="max-width: 360px; margin: 0 auto 2rem;">
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-dark); margin-bottom: 4px;">DISPATCH REFERENCE CODE</div>
+            <div class="ticket-number" id="successRefCode">HYN-DISPATCH-8894</div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button type="button" class="btn btn-gold" id="btnResetDispatch">Send Another Memo</button>
+            <a href="index.html" class="btn btn-outline-gold">Return to Home</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding-top: 0;">
+        <div>&copy; 2026 The Hyena Hub. All Rights Reserved. Borderless Cinema & Syndication.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="pages/privacy.html" class="footer-link">Privacy Policy</a>
+          <a href="pages/terms.html" class="footer-link">Rights & Terms</a>
+          <a href="inquiries.html" class="footer-link">Direct Inquiries</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT FOR LIVE SYNCHRONIZED TYPING & DISPATCH ENGINE -->
+  <script type="module">
+    import { initNavbar } from './js/navbar.js';
+    import { generateRandomID } from './js/utils.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initNavbar();
 
       const GMAIL_ADDRESS = 'Thehyenahub@gmail.com';
 
-      const handleDispatchSubmit = (e) => {
+      // Elements
+      const inputName = document.getElementById('inputName');
+      const inputEmail = document.getElementById('inputEmail');
+      const inputSubject = document.getElementById('inputSubject');
+      const inputCompany = document.getElementById('inputCompany');
+      const inputMessage = document.getElementById('inputMessage');
+
+      const previewName = document.getElementById('previewName');
+      const previewEmail = document.getElementById('previewEmail');
+      const previewSubject = document.getElementById('previewSubject');
+      const previewBody = document.getElementById('previewBody');
+      const previewIntent = document.getElementById('previewIntent');
+      const previewTone = document.getElementById('previewTone');
+      const memoHashVal = document.getElementById('memoHashVal');
+
+      const attachmentDock = document.getElementById('attachmentDock');
+      const fileAttachmentInput = document.getElementById('fileAttachmentInput');
+      const attachmentDockText = document.getElementById('attachmentDockText');
+      const previewAttachmentBox = document.getElementById('previewAttachmentBox');
+      const previewFileName = document.getElementById('previewFileName');
+
+      const btnCopyConsoleMail = document.getElementById('btnCopyConsoleMail');
+      const consoleDispatchForm = document.getElementById('consoleDispatchForm');
+      const dispatchFormState = document.getElementById('dispatchFormState');
+      const dispatchSuccessState = document.getElementById('dispatchSuccessState');
+      const successRefCode = document.getElementById('successRefCode');
+      const btnResetDispatch = document.getElementById('btnResetDispatch');
+
+      let activeIntent = 'Executive Partnership';
+      let activeTone = 'Executive Formal';
+
+      // 1. Copy Email to Clipboard
+      btnCopyConsoleMail?.addEventListener('click', async () => {
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(GMAIL_ADDRESS);
+          }
+          const orig = btnCopyConsoleMail.textContent;
+          btnCopyConsoleMail.textContent = '✓ Copied!';
+          setTimeout(() => { btnCopyConsoleMail.textContent = orig; }, 2500);
+        } catch (e) {}
+      });
+
+      // 2. Intent Category Badges
+      const intentPills = document.querySelectorAll('.intent-pill');
+      intentPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          intentPills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          activeIntent = pill.getAttribute('data-intent');
+          if (previewIntent) previewIntent.textContent = activeIntent;
+        });
+      });
+
+      // 3. AI Tone Switcher
+      const tonePills = document.querySelectorAll('.tone-pill');
+      tonePills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          tonePills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          activeTone = pill.getAttribute('data-tone');
+          if (previewTone) previewTone.textContent = activeTone;
+        });
+      });
+
+      // 4. Live Synchronized Typing Preview
+      inputName?.addEventListener('input', (e) => {
+        if (previewName) {
+          previewName.textContent = e.target.value || 'Awaiting Input...';
+          previewName.style.color = e.target.value ? '#FFFFFF' : '#6B7280';
+          previewName.style.fontStyle = e.target.value ? 'normal' : 'italic';
+        }
+      });
+
+      inputEmail?.addEventListener('input', (e) => {
+        if (previewEmail) {
+          previewEmail.textContent = e.target.value || 'Awaiting Email...';
+          previewEmail.style.color = e.target.value ? '#FFFFFF' : '#6B7280';
+          previewEmail.style.fontStyle = e.target.value ? 'normal' : 'italic';
+        }
+      });
+
+      inputSubject?.addEventListener('input', (e) => {
+        if (previewSubject) {
+          previewSubject.textContent = e.target.value || 'Direct Executive Transmission';
+        }
+      });
+
+      inputMessage?.addEventListener('input', (e) => {
+        if (previewBody) {
+          if (e.target.value) {
+            previewBody.innerHTML = `${escapeHTML(e.target.value)}<span class="typewriter-caret"></span>`;
+          } else {
+            previewBody.innerHTML = `<span style="color: #6B7280; font-style: italic;">Type your message in the studio workspace on the right to render live character preview...</span>`;
+          }
+        }
+      });
+
+      function escapeHTML(str) {
+        return str.replace(/[&<>'"]/g, 
+          tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+        );
+      }
+
+      // 5. File Attachment Dock Logic
+      attachmentDock?.addEventListener('click', () => {
+        fileAttachmentInput?.click();
+      });
+
+      fileAttachmentInput?.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+          const fname = e.target.files[0].name;
+          if (attachmentDockText) attachmentDockText.textContent = `📎 Attached: ${fname}`;
+          if (previewAttachmentBox) previewAttachmentBox.style.display = 'block';
+          if (previewFileName) previewFileName.textContent = fname;
+        }
+      });
+
+      // Drag and Drop
+      attachmentDock?.addEventListener('dragover', (e) => {
         e.preventDefault();
-        setIsDispatching(true);
+        attachmentDock.classList.add('drag-over');
+      });
 
-        const refCode = `HYN-DISPATCH-${Math.floor(1000 + Math.random() * 9000)}`;
-        setDispatchID(refCode);
+      attachmentDock?.addEventListener('dragleave', () => {
+        attachmentDock.classList.remove('drag-over');
+      });
 
-        const subjectRaw = `[${intent} | ${tone}] ${subject || 'Direct Executive Inquiry'} - from ${name || 'Executive Lead'}`;
-        const bodyRaw = `EXECUTIVE MEMO TRANSMISSION\nRef: ${refCode}\nIntent: ${intent}\nTone: ${tone}\nName: ${name}\nEmail: ${email}\nOrganization: ${company || 'N/A'}\n\nMESSAGE:\n${message}\n\n[End Transmission]`;
+      attachmentDock?.addEventListener('drop', (e) => {
+        e.preventDefault();
+        attachmentDock.classList.remove('drag-over');
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+          const fname = e.dataTransfer.files[0].name;
+          if (attachmentDockText) attachmentDockText.textContent = `📎 Attached: ${fname}`;
+          if (previewAttachmentBox) previewAttachmentBox.style.display = 'block';
+          if (previewFileName) previewFileName.textContent = fname;
+        }
+      });
 
-        const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${GMAIL_ADDRESS}&su=${encodeURIComponent(subjectRaw)}&body=${encodeURIComponent(bodyRaw)}`;
+      // 6. Form Submission & Gmail Dispatch Trigger
+      consoleDispatchForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const btn = document.getElementById('btnDispatchSubmit');
+        if (btn) btn.textContent = 'FIRING BEAM TRANSMISSION...';
+
+        const nameVal = inputName.value;
+        const emailVal = inputEmail.value;
+        const subjectVal = inputSubject.value;
+        const companyVal = inputCompany.value;
+        const msgVal = inputMessage.value;
+
+        const refID = generateRandomID('HYN', 'DISPATCH');
+        if (successRefCode) successRefCode.textContent = refID;
+
+        const subjectRaw = `[${activeIntent} | ${activeTone}] ${subjectVal} - from ${nameVal}${companyVal ? ' (' + companyVal + ')' : ''}`;
+        const bodyRaw = `EXECUTIVE MEMO TRANSMISSION\nRef: ${refID}\nIntent: ${activeIntent}\nTone: ${activeTone}\nName: ${nameVal}\nEmail: ${emailVal}\nOrganization: ${companyVal || 'N/A'}\n\nMESSAGE:\n${msgVal}\n\n[End Transmission]`;
+
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${GMAIL_ADDRESS}&su=${encodeURIComponent(subjectRaw)}&body=${encodeURIComponent(bodyRaw)}`;
 
         setTimeout(() => {
-          setIsDispatching(false);
-          setIsDispatched(true);
-          window.open(gmailWebUrl, '_blank');
-        }, 1100);
-      };
+          window.open(gmailUrl, '_blank');
+          if (dispatchFormState) dispatchFormState.style.display = 'none';
+          if (dispatchSuccessState) dispatchSuccessState.style.display = 'block';
+        }, 900);
+      });
 
-      const handleDragOver = (e) => {
-        e.preventDefault();
-        setIsDragging(true);
-      };
+      // Reset Button
+      btnResetDispatch?.addEventListener('click', () => {
+        consoleDispatchForm?.reset();
+        if (previewName) { previewName.textContent = 'Awaiting Input...'; previewName.style.color = '#6B7280'; }
+        if (previewEmail) { previewEmail.textContent = 'Awaiting Email...'; previewEmail.style.color = '#6B7280'; }
+        if (previewSubject) previewSubject.textContent = 'Direct Executive Transmission';
+        if (previewBody) previewBody.innerHTML = `<span style="color: #6B7280; font-style: italic;">Type your message in the studio workspace on the right to render live character preview...</span>`;
+        if (previewAttachmentBox) previewAttachmentBox.style.display = 'none';
+        if (attachmentDockText) attachmentDockText.textContent = '📥 Click or Drag & Drop Script Bibles / Pitch Decks Here';
 
-      const handleDragLeave = () => {
-        setIsDragging(false);
-      };
-
-      const handleDrop = (e) => {
-        e.preventDefault();
-        setIsDragging(false);
-        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-          setFileName(e.dataTransfer.files[0].name);
-        }
-      };
-
-      return (
-        <div className="relative min-h-screen w-full flex items-center justify-center p-4 sm:p-6 lg:p-12 pt-28 pb-16 overflow-hidden">
-          
-          {/* Dynamic Background Blur Spheres */}
-          <div className="absolute top-1/4 left-10 w-96 h-96 rounded-full bg-indigo-cyber/25 blur-[120px] animate-float-slow-1 pointer-events-none z-0" />
-          <div className="absolute bottom-1/4 right-10 w-[420px] h-[420px] rounded-full bg-champagne/20 blur-[140px] animate-float-slow-2 pointer-events-none z-0" />
-
-          {/* ASYMMETRIC 60/40 SPLIT SCREEN CONSOLE */}
-          <main className="relative z-10 w-full max-w-7xl glass-console-panel rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
-            
-            {/* LEFT PANEL: DYNAMIC HOLOGRAPHIC EXECUTIVE MEMO (40% DESKTOP) */}
-            <div className="lg:col-span-5 p-8 lg:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.015] relative">
-              
-              <div>
-                {/* Recipient Status Header */}
-                <div className="flex items-center justify-between mb-8">
-                  <div className="flex items-center gap-3">
-                    <img src="assets/images/logo/logo.png" alt="Hyena Emblem" className="w-9 h-9 rounded-full object-cover border border-champagne/40 shadow-lg" />
-                    <div>
-                      <span className="text-[10px] font-mono tracking-widest text-champagne uppercase font-bold">RECIPIENT DESTINATION</span>
-                      <div className="text-sm font-space font-bold text-white">TheHyenaHub Studio</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                    Live Intake
-                  </div>
-                </div>
-
-                {/* HOLOGRAPHIC MEMO CARD */}
-                <div className="holographic-card rounded-2xl p-6 sm:p-7 relative overflow-hidden">
-                  <div className="flex items-center justify-between text-[11px] font-mono text-gray-400 pb-4 mb-5 border-b border-white/10">
-                    <span className="text-champagne font-bold">EXECUTIVE DISPATCH MEMO</span>
-                    <span>SECURE HASH: {Math.floor(100000 + Math.random() * 900000)}</span>
-                  </div>
-
-                  <div className="space-y-4 font-mono text-xs">
-                    <div>
-                      <span className="text-gray-500 uppercase tracking-widest text-[10px] block mb-0.5">INTENT TAG</span>
-                      <span className="px-2.5 py-1 rounded-md bg-champagne/15 border border-champagne/30 text-champagne font-semibold inline-block">
-                        {intent}
-                      </span>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <span className="text-gray-500 uppercase tracking-widest text-[10px] block mb-0.5">SENDER NAME</span>
-                        <span className="text-white font-medium">{name || <span className="text-gray-600 font-normal">Awaiting Input...</span>}</span>
-                      </div>
-                      <div>
-                        <span className="text-gray-500 uppercase tracking-widest text-[10px] block mb-0.5">SENDER EMAIL</span>
-                        <span className="text-white font-medium truncate block">{email || <span className="text-gray-600 font-normal">Awaiting Email...</span>}</span>
-                      </div>
-                    </div>
-
-                    <div>
-                      <span className="text-gray-500 uppercase tracking-widest text-[10px] block mb-0.5">SUBJECT</span>
-                      <span className="text-champagne-bright font-space font-semibold text-sm block">{subject || 'Executive Transmission Subject'}</span>
-                    </div>
-
-                    <div>
-                      <span className="text-gray-500 uppercase tracking-widest text-[10px] block mb-1">LIVE MEMO BODY ({tone})</span>
-                      <div className="p-3.5 rounded-xl bg-black/40 border border-white/10 text-gray-200 text-xs font-sans leading-relaxed min-h-[110px]">
-                        {message ? (
-                          <>
-                            {message}
-                            <span className="typewriter-cursor"></span>
-                          </>
-                        ) : (
-                          <span className="text-gray-600 italic">Type your memo on the right workspace to render live character preview...</span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Attached File Indicator */}
-                  {fileName && (
-                    <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-champagne font-mono">
-                      <span>📎 ATTACHED: {fileName}</span>
-                      <span className="text-[10px] text-emerald-400">READY</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Bottom Security Info */}
-              <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between text-xs text-gray-400 font-mono">
-                <span>DIRECT MAILBOX: Thehyenahub@gmail.com</span>
-                <span>ENC: AES-256</span>
-              </div>
-            </div>
-
-            {/* RIGHT PANEL: INTERACTION WORKSPACE (60% DESKTOP) */}
-            <div className="lg:col-span-7 p-8 lg:p-12 flex flex-col justify-between relative">
-              
-              {!isDispatched ? (
-                <div>
-                  <div className="mb-6">
-                    <span className="text-xs uppercase tracking-widest text-champagne font-mono font-bold">DIRECT INTERACTION STUDIO</span>
-                    <h1 className="font-space text-3xl sm:text-4xl font-bold text-white mt-1">Executive Dispatch Console</h1>
-                  </div>
-
-                  {/* SMART INTENT CATEGORY BADGES */}
-                  <div className="mb-7">
-                    <label className="text-xs font-mono text-gray-400 uppercase tracking-wider block mb-2.5">MESSAGE INTENT</label>
-                    <div className="flex flex-wrap gap-2.5">
-                      {['Executive Partnership', 'Studio Pitch', 'Urgent Direct', 'Private Screener'].map((item) => (
-                        <button
-                          key={item}
-                          type="button"
-                          onClick={() => setIntent(item)}
-                          className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 ${
-                            intent === item
-                              ? 'bg-champagne text-obsidian font-bold shadow-[0_0_20px_rgba(245,158,11,0.4)] scale-105'
-                              : 'bg-white/5 border border-white/15 text-gray-300 hover:border-champagne/50 hover:text-champagne'
-                          }`}
-                        >
-                          {intent === item && '✦ '}
-                          {item}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* INPUT FORM */}
-                  <form onSubmit={handleDispatchSubmit} className="space-y-5">
-                    
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      {/* Floating Field: Full Name */}
-                      <div className="floating-field-wrap">
-                        <input
-                          type="text"
-                          id="senderName"
-                          placeholder=" "
-                          required
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          className="console-input"
-                        />
-                        <label htmlFor="senderName" className="console-label">Your Full Name *</label>
-                      </div>
-
-                      {/* Floating Field: Email */}
-                      <div className="floating-field-wrap">
-                        <input
-                          type="email"
-                          id="senderEmail"
-                          placeholder=" "
-                          required
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          className="console-input"
-                        />
-                        <label htmlFor="senderEmail" className="console-label">Your Email Address *</label>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      {/* Floating Field: Subject */}
-                      <div className="floating-field-wrap">
-                        <input
-                          type="text"
-                          id="msgSubject"
-                          placeholder=" "
-                          required
-                          value={subject}
-                          onChange={(e) => setSubject(e.target.value)}
-                          className="console-input"
-                        />
-                        <label htmlFor="msgSubject" className="console-label">Transmission Subject *</label>
-                      </div>
-
-                      {/* Floating Field: Organization */}
-                      <div className="floating-field-wrap">
-                        <input
-                          type="text"
-                          id="senderCompany"
-                          placeholder=" "
-                          value={company}
-                          onChange={(e) => setCompany(e.target.value)}
-                          className="console-input"
-                        />
-                        <label htmlFor="senderCompany" className="console-label">Organization / Studio (Optional)</label>
-                      </div>
-                    </div>
-
-                    {/* AI TONE SWITCHER */}
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <label className="text-xs font-mono text-gray-400 uppercase tracking-wider">SELECT AI DISPATCH TONE</label>
-                      </div>
-                      <div className="grid grid-cols-3 gap-2 mb-3">
-                        {['Executive Formal', 'Concise Brief', 'Creative Pitch'].map((t) => (
-                          <button
-                            key={t}
-                            type="button"
-                            onClick={() => setTone(t)}
-                            className={`py-2 px-3 rounded-xl text-xs font-medium text-center transition-all ${
-                              tone === t
-                                ? 'bg-indigo-cyber/30 border border-indigo-cyber text-white font-bold shadow-[0_0_15px_rgba(79,70,229,0.3)]'
-                                : 'bg-white/5 border border-white/10 text-gray-400 hover:text-gray-200'
-                            }`}
-                          >
-                            {t}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Floating Field: Message Area */}
-                    <div className="floating-field-wrap">
-                      <textarea
-                        id="msgBody"
-                        rows="4"
-                        placeholder=" "
-                        required
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        className="console-input resize-none"
-                      ></textarea>
-                      <label htmlFor="msgBody" className="console-label">Executive Message *</label>
-                    </div>
-
-                    {/* ATTACHMENT MAGNETIC DOCK */}
-                    <div
-                      onDragOver={handleDragOver}
-                      onDragLeave={handleDragLeave}
-                      onDrop={handleDrop}
-                      className={`p-4 rounded-2xl text-center transition-all duration-300 ${
-                        isDragging
-                          ? 'bg-champagne/15 border-2 border-champagne scale-102'
-                          : 'bg-white/[0.02] border border-white/10 hover:border-champagne/40'
-                      }`}
-                    >
-                      <span className="text-xs text-gray-300 font-mono block mb-1">
-                        {fileName ? `📎 Attached: ${fileName}` : '📥 Drag & Drop Script Bibles or Pitch Decks Here'}
-                      </span>
-                      <span className="text-[10px] text-gray-500 uppercase tracking-wider font-mono">Supports PDF, DOCX, MP4, MOV (Up to 50MB)</span>
-                    </div>
-
-                    {/* PRIMARY DISPATCH BUTTON */}
-                    <div className="shimmer-btn-wrap pt-2">
-                      <button
-                        type="submit"
-                        disabled={isDispatching}
-                        className={`w-full py-4 px-8 rounded-xl font-space font-bold uppercase tracking-widest text-obsidian bg-champagne hover:bg-champagne-bright shadow-[0_0_30px_rgba(245,158,11,0.4)] transition-all duration-300 flex items-center justify-center gap-3 ${
-                          isDispatching ? 'animate-pulse opacity-80' : 'hover:-translate-y-0.5'
-                        }`}
-                      >
-                        {isDispatching ? (
-                          <>
-                            <span className="w-5 h-5 border-2 border-obsidian border-t-transparent rounded-full animate-spin"></span>
-                            FIRING BEAM TRANSMISSION...
-                          </>
-                        ) : (
-                          <>
-                            DISPATCH EXECUTIVE MEMO &rarr;
-                          </>
-                        )}
-                      </button>
-                    </div>
-
-                  </form>
-                </div>
-              ) : (
-                {/* DISPATCH SUCCESS SCREEN */}
-                <div className="text-center py-12 animate-fade-in">
-                  <div className="w-20 h-20 rounded-full bg-champagne/20 border-2 border-champagne text-champagne flex items-center justify-center text-3xl mx-auto mb-6 shadow-[0_0_50px_rgba(245,158,11,0.5)]">
-                    ✦
-                  </div>
-
-                  <span className="text-xs font-mono uppercase tracking-widest text-champagne font-bold block mb-2">TRANSMISSION SENT</span>
-                  <h2 className="font-space text-3xl sm:text-4xl font-bold text-white mb-3">Executive Dispatch Confirmed</h2>
-                  <p className="text-sm text-gray-400 max-w-md mx-auto mb-8 font-light">
-                    Your executive memo has been compiled and dispatched to <strong className="text-champagne">Thehyenahub@gmail.com</strong>.
-                  </p>
-
-                  <div className="p-5 rounded-2xl bg-black/50 border border-champagne/30 mb-8 max-w-sm mx-auto font-mono">
-                    <span className="text-[10px] uppercase tracking-widest text-gray-500 block mb-1">DISPATCH REFERENCE CODE</span>
-                    <span className="text-base text-champagne-bright font-bold">{dispatchID}</span>
-                  </div>
-
-                  <div className="flex gap-4 justify-center">
-                    <button
-                      type="button"
-                      onClick={() => setIsDispatched(false)}
-                      className="py-3.5 px-6 rounded-xl bg-champagne text-obsidian font-space font-bold text-xs uppercase tracking-wider hover:bg-champagne-bright transition-all shadow-lg"
-                    >
-                      Send Another Memo
-                    </button>
-                    <a
-                      href="index.html"
-                      className="py-3.5 px-6 rounded-xl border border-white/20 text-white font-space font-bold text-xs uppercase tracking-wider hover:bg-white/10 transition-all"
-                    >
-                      Return to Home
-                    </a>
-                  </div>
-                </div>
-              )}
-
-            </div>
-          </main>
-
-        </div>
-      );
-    }
-
-    const root = ReactDOM.createRoot(document.getElementById('dispatchRoot'));
-    root.render(<DispatchConsoleApp />);
+        if (dispatchSuccessState) dispatchSuccessState.style.display = 'none';
+        if (dispatchFormState) dispatchFormState.style.display = 'block';
+      });
+    });
   </script>
 </body>
 </html>
