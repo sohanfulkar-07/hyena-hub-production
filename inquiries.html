@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us — The Hyena Hub</title>
-  <meta name="description" content="Contact The Hyena Hub directly via email at Thehyenahub@gmail.com for production, distribution, and global cinema inquiries.">
+  <title>Direct Inquiries — The Hyena Hub</title>
+  <meta name="description" content="Direct executive intake channel for film acquisition, co-production, theatrical syndication, and private theater screenings at The Hyena Hub. Contact us at Thehyenahub@gmail.com.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,7 @@
         <li><a href="about.html" class="nav-link">About Us</a></li>
         <li><a href="services.html" class="nav-link">Services</a></li>
         <li><a href="portfolio.html" class="nav-link">Teaser</a></li>
-        <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
 
       <div class="nav-actions">
@@ -53,96 +53,94 @@
     <a href="inquiries.html" class="btn btn-gold" style="width: 100%;">Direct Inquiries</a>
   </div>
 
-  <!-- CONTACT HERO HEADER -->
+  <!-- INQUIRIES HERO HEADER -->
   <section class="section" style="padding-top: 10rem; background: var(--color-obsidian-surface); border-bottom: 1px solid var(--color-border);">
     <div class="container">
       <div class="section-header center fade-in-up">
-        <span class="section-label">Direct Contact</span>
-        <h1 class="section-title">Get In Touch & Direct Inquiries</h1>
+        <span class="section-label">Executive Intake Channel</span>
+        <h1 class="section-title">Direct Studio & Email Inquiries</h1>
         <p class="section-subtitle">
-          Connect with our executive team directly via email or send us a message below. We welcome co-production, distribution, and general cinema inquiries.
+          Direct communication pipeline to The Hyena Hub executive producers and distribution leads. Send your message directly to our studio mailbox at <strong style="color: var(--color-gold);">Thehyenahub@gmail.com</strong>.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- DIRECT CONTACT SECTION -->
-  <section class="section" id="intake">
+  <!-- DIRECT INQUIRIES MAIN SECTION -->
+  <section class="section" id="inquiry-form-section">
     <div class="container">
       
       <div class="intake-wrapper fade-in-up" style="margin-top: 0;">
         
-        <!-- Gmail Direct Highlight Box -->
+        <!-- Official Mailbox Highlight Card -->
         <div class="gmail-highlight-box">
           <div class="gmail-badge-icon">✉️</div>
           <div class="gmail-info">
-            <span class="gmail-label">Official General & Studio Mailbox</span>
+            <span class="gmail-label">Official Executive & Studio Mailbox</span>
             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Thehyenahub@gmail.com" target="_blank" class="gmail-address">Thehyenahub@gmail.com</a>
           </div>
           <div class="gmail-actions">
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Thehyenahub@gmail.com" target="_blank" class="btn btn-gold btn-sm" id="btnOpenGmailWeb">Open in Web Gmail</a>
-            <button type="button" class="btn btn-outline-gold btn-sm" id="btnCopyGmail">Copy Email</button>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Thehyenahub@gmail.com" target="_blank" class="btn btn-gold btn-sm">Open Web Gmail</a>
+            <a href="mailto:Thehyenahub@gmail.com" class="btn btn-outline-gold btn-sm">Default Mail App</a>
+            <button type="button" class="btn btn-charcoal btn-sm" id="btnCopyEmailInquiries">Copy Email</button>
           </div>
         </div>
 
-        <!-- Direct Contact Form -->
-        <form id="directContactForm" style="margin-top: 2.5rem;">
+        <!-- Interactive Direct Inquiry Form -->
+        <form id="directInquiryForm" style="margin-top: 2.5rem;">
           <div class="form-grid-2">
             <div class="form-group">
-              <label class="form-label" for="contactName">Your Full Name *</label>
-              <input type="text" id="contactName" class="form-input" placeholder="e.g. Saurabh Kumar" required>
+              <label class="form-label" for="inquiryName">Your Full Name *</label>
+              <input type="text" id="inquiryName" class="form-input" placeholder="e.g. Saurabh Kumar" required>
             </div>
             <div class="form-group">
-              <label class="form-label" for="contactEmail">Your Email *</label>
-              <input type="email" id="contactEmail" class="form-input" placeholder="you@company.com" required>
+              <label class="form-label" for="inquiryEmail">Your Email Address *</label>
+              <input type="email" id="inquiryEmail" class="form-input" placeholder="you@company.com" required>
             </div>
           </div>
 
           <div class="form-grid-2">
             <div class="form-group">
-              <label class="form-label" for="inquiryType">Inquiry Subject *</label>
-              <select id="inquiryType" class="form-select" required>
-                <option value="General Inquiry">General Inquiry</option>
+              <label class="form-label" for="inquirySubject">Inquiry Category *</label>
+              <select id="inquirySubject" class="form-select" required>
+                <option value="General Executive Inquiry">General Executive Inquiry</option>
                 <option value="Co-Production & Financing">Co-Production & Financing</option>
                 <option value="Distribution & Platform Syndication">Distribution & Platform Syndication</option>
-                <option value="Private Theater Screening">Private Theater Screening</option>
-                <option value="Press & Media">Press & Media</option>
+                <option value="Private Theater Screening Request">Private Theater Screening Request</option>
+                <option value="Press & Media Relations">Press & Media Relations</option>
               </select>
             </div>
             <div class="form-group">
-              <label class="form-label" for="contactCompany">Company / Agency (Optional)</label>
-              <input type="text" id="contactCompany" class="form-input" placeholder="e.g. WME / Independent Studio">
+              <label class="form-label" for="inquiryCompany">Studio / Organization (Optional)</label>
+              <input type="text" id="inquiryCompany" class="form-input" placeholder="e.g. Paramount / Independent Agency">
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="contactMessage">Message *</label>
-            <textarea id="contactMessage" class="form-textarea" placeholder="Describe your inquiry or project details here..." required></textarea>
+            <label class="form-label" for="inquiryMessage">Your Direct Message *</label>
+            <textarea id="inquiryMessage" class="form-textarea" placeholder="Detail your project synopsis, distribution inquiry, or executive message..." required></textarea>
           </div>
 
           <div class="form-actions-row" style="margin-top: 1.5rem; justify-content: flex-end;">
-            <button type="submit" class="btn btn-gold" style="width: 100%; max-width: 340px;">Open in Gmail Web & Send →</button>
+            <button type="submit" class="btn btn-gold" style="width: 100%; max-width: 360px;">Send Email to Thehyenahub@gmail.com →</button>
           </div>
         </form>
 
         <!-- CONFIRMATION PANEL -->
-        <div class="confirmation-screen" id="contactConfirmPanel" style="display: none;">
+        <div class="confirmation-screen" id="inquiryConfirmPanel" style="display: none;">
           <div class="confirmation-icon-circle">✓</div>
-          <h3 class="panel-title">Message Prepared for Gmail</h3>
+          <h3 class="panel-title">Direct Email Prepared</h3>
           <p class="section-subtitle" style="margin: 0 auto; max-width: 580px;">
-            Your message has been opened directly in your browser's active Gmail account for <strong style="color: var(--color-gold);">Thehyenahub@gmail.com</strong>.
+            Your inquiry has been compiled and opened for sending to <strong style="color: var(--color-gold);">Thehyenahub@gmail.com</strong>.
           </p>
           <div class="ticket-box">
-            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-dark); margin-bottom: 4px;">Direct Mailbox Reference</div>
-            <div class="ticket-number" id="contactTicketRef">HYN-2026-GMAIL</div>
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-dark); margin-bottom: 4px;">Inquiry Reference Code</div>
+            <div class="ticket-number" id="inquiryTicketRef">THH-INQ-2026</div>
           </div>
-          <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem;">
-            If your browser blocked the new tab, select your preferred mail composer below:
-          </p>
-          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="#" target="_blank" class="btn btn-gold" id="btnConfirmGmailWeb">Open Web Gmail</a>
-            <a href="#" target="_blank" class="btn btn-outline-gold" id="btnConfirmOutlookWeb">Open Web Outlook</a>
-            <button type="button" class="btn btn-charcoal" id="btnResetContactForm">Send Another Message</button>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+            <a href="#" target="_blank" class="btn btn-gold" id="btnInquiryGmailWeb">Open Web Gmail</a>
+            <a href="#" class="btn btn-outline-gold" id="btnInquiryMailto">Open Mail Client</a>
+            <button type="button" class="btn btn-charcoal" id="btnResetInquiryForm">New Inquiry</button>
           </div>
         </div>
 
@@ -151,40 +149,31 @@
     </div>
   </section>
 
-  <!-- STUDIO LOCATIONS & DIRECT CONTACT -->
+  <!-- INQUIRY CATEGORIES GRID -->
   <section class="section" style="background: var(--color-obsidian-surface); border-top: 1px solid var(--color-border);">
     <div class="container">
       <div class="section-header center fade-in-up">
-        <span class="section-label">Worldwide Offices</span>
-        <h2 class="section-title">Production Hubs</h2>
+        <span class="section-label">Inquiry Pathways</span>
+        <h2 class="section-title">Executive Collaboration Channels</h2>
       </div>
 
       <div class="theater-syndication-features fade-in-up delay-1">
         <div class="syndication-item">
-          <div class="syndication-icon">🏢</div>
-          <h3 class="syndication-title">London Studio & HQ</h3>
-          <p class="syndication-desc">
-            42 Soho Square, Film District, London W1D 3QB<br>
-            <strong style="color: var(--color-gold);">Thehyenahub@gmail.com</strong>
-          </p>
-        </div>
-
-        <div class="syndication-item">
-          <div class="syndication-icon">🏛️</div>
-          <h3 class="syndication-title">Paris Co-Production Office</h3>
-          <p class="syndication-desc">
-            18 Rue du Faubourg Saint-Honoré, 75008 Paris<br>
-            <strong style="color: var(--color-gold);">Thehyenahub@gmail.com</strong>
-          </p>
-        </div>
-
-        <div class="syndication-item">
           <div class="syndication-icon">🎬</div>
-          <h3 class="syndication-title">Los Angeles Distribution</h3>
-          <p class="syndication-desc">
-            9454 Wilshire Blvd, Beverly Hills, CA 90212<br>
-            <strong style="color: var(--color-gold);">Thehyenahub@gmail.com</strong>
-          </p>
+          <h3 class="syndication-title">Co-Production & Packaging</h3>
+          <p class="syndication-desc">Screenplay development, packaging visual bibles, and international co-financing structures.</p>
+        </div>
+
+        <div class="syndication-item">
+          <div class="syndication-icon">🌐</div>
+          <h3 class="syndication-title">Global Syndication</h3>
+          <p class="syndication-desc">Direct-to-platform OTT deals, festival premiere positioning, and territory licensing.</p>
+        </div>
+
+        <div class="syndication-item">
+          <div class="syndication-icon">🔒</div>
+          <h3 class="syndication-title">Private Theater Access</h3>
+          <p class="syndication-desc">Request forensic DRM-watermarked executive screeners for film acquisitions.</p>
         </div>
       </div>
     </div>

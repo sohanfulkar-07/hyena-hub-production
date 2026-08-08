@@ -5,13 +5,13 @@
 import { generateRandomID } from './utils.js';
 
 export function initContactWizard() {
-  const directForm = document.getElementById('directContactForm');
-  const btnCopyGmail = document.getElementById('btnCopyGmail');
-  const confirmPanel = document.getElementById('contactConfirmPanel');
-  const ticketRef = document.getElementById('contactTicketRef');
-  const btnReset = document.getElementById('btnResetContactForm');
-  const btnConfirmGmailWeb = document.getElementById('btnConfirmGmailWeb');
-  const btnConfirmOutlookWeb = document.getElementById('btnConfirmOutlookWeb');
+  const directForm = document.getElementById('directContactForm') || document.getElementById('directInquiryForm');
+  const btnCopyGmail = document.getElementById('btnCopyGmail') || document.getElementById('btnCopyEmailInquiries');
+  const confirmPanel = document.getElementById('contactConfirmPanel') || document.getElementById('inquiryConfirmPanel');
+  const ticketRef = document.getElementById('contactTicketRef') || document.getElementById('inquiryTicketRef');
+  const btnReset = document.getElementById('btnResetContactForm') || document.getElementById('btnResetInquiryForm');
+  const btnConfirmGmailWeb = document.getElementById('btnConfirmGmailWeb') || document.getElementById('btnInquiryGmailWeb');
+  const btnConfirmOutlookWeb = document.getElementById('btnConfirmOutlookWeb') || document.getElementById('btnInquiryMailto');
 
   const GMAIL_ADDRESS = 'Thehyenahub@gmail.com';
 
@@ -47,33 +47,33 @@ export function initContactWizard() {
     });
   }
 
-  // 2. Direct Contact Form Submission -> Direct Webmail Launcher
+  // 2. Direct Contact & Inquiry Form Submission -> Direct Webmail Launcher
   if (directForm) {
     directForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const name = document.getElementById('contactName')?.value || '';
-      const email = document.getElementById('contactEmail')?.value || '';
-      const inquiry = document.getElementById('inquiryType')?.value || 'General Inquiry';
-      const company = document.getElementById('contactCompany')?.value || '';
-      const message = document.getElementById('contactMessage')?.value || '';
+      const name = (document.getElementById('contactName') || document.getElementById('inquiryName'))?.value || '';
+      const email = (document.getElementById('contactEmail') || document.getElementById('inquiryEmail'))?.value || '';
+      const inquiry = (document.getElementById('inquiryType') || document.getElementById('inquirySubject'))?.value || 'General Inquiry';
+      const company = (document.getElementById('contactCompany') || document.getElementById('inquiryCompany'))?.value || '';
+      const message = (document.getElementById('contactMessage') || document.getElementById('inquiryMessage'))?.value || '';
 
-      const subjectRaw = `[${inquiry}] Inquiry from ${name}${company ? ' (' + company + ')' : ''}`;
-      const bodyRaw = `Name: ${name}\nEmail: ${email}\nCompany/Agency: ${company || 'N/A'}\nInquiry Type: ${inquiry}\n\nMessage:\n${message}`;
+      const subjectRaw = `[${inquiry}] Direct Inquiry from ${name}${company ? ' (' + company + ')' : ''}`;
+      const bodyRaw = `Name: ${name}\nEmail: ${email}\nCompany/Organization: ${company || 'N/A'}\nInquiry Category: ${inquiry}\n\nMessage:\n${message}`;
 
       const subject = encodeURIComponent(subjectRaw);
       const body = encodeURIComponent(bodyRaw);
 
-      // Direct Webmail URLs (Opens user's active browser-login account instead of OS Microsoft Mail app)
+      // Direct Webmail URLs & Mailto Fallback
       const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${GMAIL_ADDRESS}&su=${subject}&body=${body}`;
-      const outlookWebUrl = `https://outlook.live.com/mail/0/deeplink/compose?to=${GMAIL_ADDRESS}&subject=${subject}&body=${body}`;
+      const mailtoUrl = `mailto:${GMAIL_ADDRESS}?subject=${subject}&body=${body}`;
 
       // Update confirmation links
       if (btnConfirmGmailWeb) btnConfirmGmailWeb.href = gmailWebUrl;
-      if (btnConfirmOutlookWeb) btnConfirmOutlookWeb.href = outlookWebUrl;
+      if (btnConfirmOutlookWeb) btnConfirmOutlookWeb.href = mailtoUrl;
 
       // Generate Reference Ticket
-      const refID = generateRandomID('HYN', 'GMAIL');
+      const refID = generateRandomID('THH', 'INQ');
       if (ticketRef) ticketRef.textContent = refID;
 
       // Open directly in web Gmail (currently logged-in account in browser)
