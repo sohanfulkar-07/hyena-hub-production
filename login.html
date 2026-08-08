@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TheHyenaHub Portal — Secure Login</title>
+  <meta name="description" content="Secure executive portal access for The Hyena Hub platform. Enter your passkey or credentials to launch the hub.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <style>
+    /* ==========================================================================
+       LOGIN PORTAL & ANTIGRAVITY ANIMATION STYLES
+       ========================================================================== */
+    .login-body-wrapper {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 1.5rem 4rem;
+      background: radial-gradient(circle at 50% 30%, #1a162b 0%, #0e0e12 70%, #08080a 100%);
+      overflow: hidden;
+    }
+
+    /* Cosmic Canvas Background */
+    #cosmicCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Central UI Login Card */
+    .login-card {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 480px;
+      background: rgba(18, 18, 18, 0.75);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.5rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.15);
+      animation: floatOrbital 6s ease-in-out infinite alternate;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, filter 0.6s ease;
+    }
+
+    /* Passive Floating Microgravity Animation */
+    @keyframes floatOrbital {
+      0% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-8px) rotate(0.4deg);
+      }
+      100% {
+        transform: translateY(6px) rotate(-0.4deg);
+      }
+    }
+
+    /* Active Antigravity Launch Effect */
+    .login-card.launching {
+      transform: translateY(-120vh) scale(0.9) !important;
+      opacity: 0 !important;
+      filter: blur(12px) brightness(1.8) !important;
+      transition: all 1.2s cubic-bezier(0.7, 0, 0.3, 1) !important;
+    }
+
+    .card-header-box {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .hyena-head-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(229, 222, 255, 0.08);
+      border: 1px solid rgba(229, 222, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #E5DEFF;
+      flex-shrink: 0;
+      box-shadow: 0 0 15px rgba(229, 222, 255, 0.2);
+    }
+
+    .hyena-head-icon img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .portal-subtitle-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #A0A0A0;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .portal-title-gold {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--color-gold);
+      line-height: 1.1;
+    }
+
+    /* Input Fields & Fluid Focus Lift */
+    .login-form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .login-input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .login-input {
+      width: 100%;
+      background: #202020;
+      border: 1px solid #303030;
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      color: var(--color-white);
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      outline: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .login-input:focus {
+      background: #26262a;
+      border-color: rgba(229, 222, 255, 0.6);
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(229, 222, 255, 0.25), 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .toggle-password-btn {
+      position: absolute;
+      right: 14px;
+      background: none;
+      border: none;
+      color: #E5DEFF;
+      cursor: pointer;
+      opacity: 0.75;
+      transition: opacity 0.2s ease;
+      display: flex;
+      align-items: center;
+      padding: 4px;
+    }
+
+    .toggle-password-btn:hover {
+      opacity: 1;
+    }
+
+    /* Additional Links & Options Row */
+    .login-options-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 1.25rem 0 2rem;
+      font-size: 0.82rem;
+      color: #A0A0A0;
+    }
+
+    .remember-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .remember-checkbox {
+      accent-color: var(--color-gold);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .forgot-link {
+      color: var(--color-gold);
+      text-decoration: none;
+      transition: text-decoration 0.2s ease, color 0.2s ease;
+    }
+
+    .forgot-link:hover {
+      text-decoration: underline;
+      color: var(--color-gold-bright);
+    }
+
+    /* Social Sign-in Divider & Buttons */
+    .social-divider {
+      text-align: center;
+      margin: 2rem 0 1.25rem;
+      position: relative;
+    }
+
+    .social-divider::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--color-border);
+      z-index: 1;
+    }
+
+    .social-divider-text {
+      position: relative;
+      z-index: 2;
+      background: #121212;
+      padding: 0 14px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #A0A0A0;
+    }
+
+    .social-btns-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-btn {
+      background: #202020;
+      border: 1px solid #303030;
+      border-radius: var(--radius-sm);
+      padding: 10px 16px;
+      color: var(--color-white);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .social-btn:hover {
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+      background: rgba(212, 175, 55, 0.08);
+      transform: translateY(-2px);
+    }
+
+    /* Primary Launch Button */
+    .btn-access-launch {
+      width: 100%;
+      padding: 16px 24px;
+      background: var(--color-gold);
+      color: var(--color-obsidian);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-access-launch:hover {
+      background: var(--color-gold-bright);
+      box-shadow: 0 0 35px rgba(212, 175, 55, 0.6);
+      transform: translateY(-3px);
+    }
+
+    /* Launch Success Portal Screen */
+    .launch-success-screen {
+      display: none;
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 540px;
+      background: rgba(18, 18, 18, 0.85);
+      backdrop-filter: blur(30px);
+      border: 1px solid var(--color-gold);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 2.5rem;
+      box-shadow: 0 0 60px rgba(212, 175, 55, 0.4);
+      animation: scaleFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes scaleFadeIn {
+      0% { opacity: 0; transform: scale(0.85); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo/logo.png" alt="The Hyena Hub Logo">
+        <span class="brand-text">The Hyena <span>Hub</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="portfolio.html" class="nav-link">Teaser</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="inquiries.html" class="btn btn-outline-gold">Direct Inquiries</a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobileDrawer">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="services.html" class="mobile-nav-link">Services</a></li>
+      <li><a href="portfolio.html" class="mobile-nav-link">Teaser</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <a href="inquiries.html" class="btn btn-gold" style="width: 100%;">Direct Inquiries</a>
+  </div>
+
+  <!-- LOGIN PORTAL WRAPPER WITH COSMIC CANVAS -->
+  <div class="login-body-wrapper">
+    <canvas id="cosmicCanvas"></canvas>
+
+    <!-- CENTRAL UI LOGIN CARD -->
+    <div class="login-card" id="loginCard">
+      
+      <!-- Card Header -->
+      <div class="card-header-box">
+        <div class="hyena-head-icon">
+          <img src="assets/images/logo/logo.png" alt="Hyena Silhouette">
+        </div>
+        <div>
+          <div class="portal-subtitle-tag">SECURE PORTAL ACCESS</div>
+          <div class="portal-title-gold">TheHyenaHub Login</div>
+        </div>
+      </div>
+
+      <!-- Login Form -->
+      <form id="portalLoginForm">
+        <!-- Field 1: Username / Email -->
+        <div class="login-form-group">
+          <label class="form-label" for="portalUsername">USERNAME / EMAIL *</label>
+          <div class="login-input-wrap">
+            <input type="email" id="portalUsername" class="login-input" placeholder="e.g., admin@hyenahub.com" required>
+          </div>
+        </div>
+
+        <!-- Field 2: Password -->
+        <div class="login-form-group">
+          <label class="form-label" for="portalPassword">PASSWORD *</label>
+          <div class="login-input-wrap">
+            <input type="password" id="portalPassword" class="login-input" placeholder="Enter secure passphrase" required>
+            <button type="button" class="toggle-password-btn" id="btnTogglePassword" aria-label="Toggle Password Visibility">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Options Row -->
+        <div class="login-options-row">
+          <label class="remember-label">
+            <input type="checkbox" class="remember-checkbox" checked>
+            <span>Remember Me</span>
+          </label>
+          <a href="#" class="forgot-link" id="btnForgotPassword">Forgot Password?</a>
+        </div>
+
+        <!-- Primary CTA Launch Button -->
+        <button type="submit" class="btn-access-launch" id="btnAccessHub">
+          ACCESS HUB &rarr;
+        </button>
+
+        <!-- Social Sign-in Divider -->
+        <div class="social-divider">
+          <span class="social-divider-text">OR SIGN IN WITH</span>
+        </div>
+
+        <!-- Social Buttons -->
+        <div class="social-btns-grid">
+          <button type="button" class="social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+            Passkey
+          </button>
+          <button type="button" class="social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.761H12.545z"/></svg>
+            Google
+          </button>
+        </div>
+      </form>
+
+    </div>
+
+    <!-- LAUNCH SUCCESS PORTAL SCREEN -->
+    <div class="launch-success-screen" id="launchSuccessScreen">
+      <div class="confirmation-icon-circle" style="width: 70px; height: 70px; font-size: 2rem; margin: 0 auto 1.5rem;">✦</div>
+      <h2 class="section-title" style="color: var(--color-gold); font-size: 2.2rem; margin-bottom: 1rem;">Welcome to the Hub Dashboard</h2>
+      <p class="section-subtitle" style="margin-bottom: 2rem;">
+        Antigravity propulsion verified. You have been authenticated into The Hyena Hub private executive portal.
+      </p>
+      
+      <div class="ticket-box" style="margin-bottom: 2rem;">
+        <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-dark); margin-bottom: 4px;">AUTHENTICATED PASSPORT ID</div>
+        <div class="ticket-number" id="portalPasskeyID">HYN-HUB-8809-AUTH</div>
+      </div>
+
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <a href="portfolio.html#theater" class="btn btn-gold">Enter Private Theater</a>
+        <a href="index.html" class="btn btn-outline-gold">Return to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding-top: 0;">
+        <div>&copy; 2026 The Hyena Hub. All Rights Reserved. Borderless Cinema Portal.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="pages/privacy.html" class="footer-link">Privacy Policy</a>
+          <a href="pages/terms.html" class="footer-link">Terms & Security</a>
+          <a href="inquiries.html" class="footer-link">Direct Inquiries</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MAIN SCRIPT & ANTIGRAVITY PARTICLE CANVAS ENGINE -->
+  <script type="module">
+    import { initNavbar } from './js/navbar.js';
+    import { generateRandomID } from './js/utils.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initNavbar();
+
+      // 1. Password Visibility Toggle
+      const passwordInput = document.getElementById('portalPassword');
+      const btnTogglePassword = document.getElementById('btnTogglePassword');
+
+      btnTogglePassword?.addEventListener('click', () => {
+        const isPassword = passwordInput.type === 'password';
+        passwordInput.type = isPassword ? 'text' : 'password';
+        btnTogglePassword.style.color = isPassword ? 'var(--color-gold)' : '#E5DEFF';
+      });
+
+      // 2. Cosmic Canvas Antigravity Particle Engine
+      const canvas = document.getElementById('cosmicCanvas');
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        });
+
+        const particles = [];
+        const particleCount = 65;
+
+        class Particle {
+          constructor() {
+            this.reset();
+          }
+
+          reset() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.size = Math.random() * 2.5 + 0.5;
+            this.speedY = -(Math.random() * 0.4 + 0.1);
+            this.speedX = (Math.random() - 0.5) * 0.2;
+            this.alpha = Math.random() * 0.6 + 0.2;
+            this.color = Math.random() > 0.4 ? 'rgba(212, 175, 55, ' : 'rgba(229, 222, 255, ';
+          }
+
+          update() {
+            this.y += this.speedY;
+            this.x += this.speedX;
+
+            if (this.y < -10 || this.x < -10 || this.x > width + 10) {
+              this.reset();
+              this.y = height + 10;
+            }
+          }
+
+          draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = this.color + this.alpha + ')';
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = 'rgba(212, 175, 55, 0.4)';
+            ctx.fill();
+          }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+          particles.push(new Particle());
+        }
+
+        function animateCanvas() {
+          ctx.clearRect(0, 0, width, height);
+          particles.forEach(p => {
+            p.update();
+            p.draw();
+          });
+          requestAnimationFrame(animateCanvas);
+        }
+
+        animateCanvas();
+      }
+
+      // 3. Antigravity Launch Sequence Form Submission
+      const portalForm = document.getElementById('portalLoginForm');
+      const loginCard = document.getElementById('loginCard');
+      const launchSuccessScreen = document.getElementById('launchSuccessScreen');
+      const portalPasskeyID = document.getElementById('portalPasskeyID');
+
+      portalForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Trigger Launch Sequence
+        loginCard.classList.add('launching');
+
+        // Generate Passport ID
+        if (portalPasskeyID) {
+          portalPasskeyID.textContent = generateRandomID('HYN-HUB', 'AUTH');
+        }
+
+        setTimeout(() => {
+          loginCard.style.display = 'none';
+          if (launchSuccessScreen) {
+            launchSuccessScreen.style.display = 'block';
+          }
+        }, 1000);
+      });
+    });
+  </script>
+</body>
+</html>
