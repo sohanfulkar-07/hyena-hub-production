@@ -1,6 +1,5 @@
 /* ==========================================================================
-   THE HYENA HUB — Master Stylesheet
-   Imports modular design system layers
+   THE HYENA HUB — Master Stylesheet & Cinematic Editorial Layouts
    ========================================================================== */
 
 @import 'variables.css';
@@ -9,7 +8,7 @@
 @import 'responsive.css';
 
 /* --------------------------------------------------------------------------
-   HERO SECTION STYLING
+   01. HERO SECTION STYLING
    -------------------------------------------------------------------------- */
 .hero {
   position: relative;
@@ -17,8 +16,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8rem 2rem 4rem;
+  padding: 9rem 2rem 5rem;
   overflow: hidden;
+  background-color: var(--color-cinematic-black, #060608);
 }
 
 .hero-media-wrap {
@@ -32,63 +32,59 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: brightness(0.4) contrast(1.1);
-  transform: scale(1.05);
-  animation: heroZoom 20s infinite alternate cubic-bezier(0.25, 1, 0.5, 1);
+  filter: brightness(0.5) contrast(1.15);
+  transform: scale(1.04);
+  animation: heroZoom 22s infinite alternate cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 @keyframes heroZoom {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.1); }
+  0% { transform: scale(1.02); }
+  100% { transform: scale(1.12); }
 }
 
 .hero-overlay {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(circle at center, rgba(11, 11, 12, 0.4) 0%, var(--color-obsidian) 90%);
+  background: radial-gradient(circle at center, rgba(6, 6, 8, 0.35) 0%, rgba(6, 6, 8, 0.92) 85%);
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 960px;
+  max-width: 1000px;
   text-align: center;
   margin: 0 auto;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 18px;
-  background: rgba(11, 11, 12, 0.8);
-  border: 1px solid var(--color-border-gold);
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
+.hero-meta-tag {
+  display: inline-block;
+  font-family: var(--font-metadata, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--color-gold);
-  margin-bottom: 2rem;
-  backdrop-filter: blur(10px);
-}
-
-.hero-badge-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--color-gold);
-  box-shadow: 0 0 10px var(--color-gold);
+  color: var(--color-champagne-gold, #D4B44A);
+  margin-bottom: 1.8rem;
+  padding: 6px 16px;
+  background: rgba(10, 10, 12, 0.65);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: var(--radius-full, 9999px);
+  backdrop-filter: blur(12px);
 }
 
 .hero-title {
-  font-size: clamp(2.8rem, 6vw, 4.8rem);
-  margin-bottom: 1.8rem;
-  line-height: 1.1;
+  font-family: var(--font-heading, 'Playfair Display', serif);
+  font-size: clamp(3rem, 7.5vw, 6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-ivory, #F5F5F7);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
 }
 
 .hero-subtext {
-  font-size: 1.25rem;
-  color: var(--color-text-muted);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: var(--color-muted-grey, #A1A1AA);
   max-width: 720px;
   margin: 0 auto 3rem;
   line-height: 1.7;
@@ -113,22 +109,23 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  color: var(--color-text-muted);
+  color: var(--color-muted-grey);
   text-decoration: none;
-  font-size: 0.7rem;
+  font-family: var(--font-metadata, monospace);
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   transition: color var(--transition-fast);
 }
 
 .scroll-indicator:hover {
-  color: var(--color-gold);
+  color: var(--color-champagne-gold);
 }
 
 .scroll-arrow {
   width: 1px;
-  height: 32px;
-  background: linear-gradient(to bottom, var(--color-gold), transparent);
+  height: 36px;
+  background: linear-gradient(to bottom, var(--color-champagne-gold), transparent);
   animation: scrollDrop 2s infinite;
 }
 
@@ -137,4 +134,156 @@
   50% { transform: scaleY(1); transform-origin: top; }
   50.1% { transform: scaleY(1); transform-origin: bottom; }
   100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* --------------------------------------------------------------------------
+   02. EDITORIAL BRAND STATEMENT
+   -------------------------------------------------------------------------- */
+.brand-statement-section {
+  padding: clamp(5rem, 9vw, 8.5rem) 2rem;
+  background-color: var(--color-cinematic-black);
+  position: relative;
+  text-align: center;
+}
+
+.statement-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.statement-tag {
+  font-family: var(--font-metadata, monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-champagne-gold);
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.editorial-headline {
+  font-family: var(--font-heading, 'Playfair Display', serif);
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-ivory);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.gold-divider-rule {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-champagne-gold), transparent);
+  margin: 3rem auto 0;
+}
+
+/* --------------------------------------------------------------------------
+   03. HYENA PHILOSOPHY SECTION
+   -------------------------------------------------------------------------- */
+.hyena-philosophy-section {
+  padding: clamp(5rem, 8vw, 8rem) 2rem;
+  background: linear-gradient(180deg, var(--color-cinematic-black) 0%, var(--color-obsidian) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.philosophy-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.hyena-imagery-wrap {
+  position: relative;
+  border-radius: var(--radius-md, 16px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85);
+}
+
+.hyena-img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(80%) contrast(1.2) brightness(0.7);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+}
+
+.hyena-imagery-wrap:hover .hyena-img {
+  transform: scale(1.04);
+  filter: grayscale(40%) contrast(1.25) brightness(0.85);
+}
+
+.hyena-img-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 30%, var(--color-cinematic-black) 95%);
+  pointer-events: none;
+}
+
+.philosophy-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.philosophy-tag {
+  font-family: var(--font-metadata, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  color: var(--color-champagne-gold);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.philosophy-title {
+  font-family: var(--font-heading, 'Playfair Display', serif);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-ivory);
+  margin-bottom: 1.5rem;
+}
+
+.philosophy-desc {
+  font-size: 1.05rem;
+  color: var(--color-muted-grey);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.philosophy-traits {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.trait-item-title {
+  font-family: var(--font-metadata, monospace);
+  font-size: 0.8rem;
+  color: var(--color-champagne-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 4px;
+}
+
+.trait-item-desc {
+  font-size: 0.88rem;
+  color: var(--color-muted-grey);
+  line-height: 1.5;
 }
