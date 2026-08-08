@@ -1,5 +1,5 @@
 /* ==========================================================================
-   THE HYENA HUB — Master Stylesheet & Authentic Cinema Layouts (Pass 2)
+   THE HYENA HUB — Master Stylesheet & Editorial Cinema Art Direction (Pass 3)
    ========================================================================== */
 
 @import 'variables.css';
@@ -8,17 +8,37 @@
 @import 'responsive.css';
 
 /* --------------------------------------------------------------------------
-   01. HERO SECTION STYLING
+   00. GLOBAL CINEMATIC GRAIN OVERLAY
+   -------------------------------------------------------------------------- */
+.cinematic-grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0.035;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+/* --------------------------------------------------------------------------
+   01. HERO SECTION STYLING (ASYMMETRIC EDITORIAL POSTER COMPOSITION)
    -------------------------------------------------------------------------- */
 .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 9rem 2rem 5rem;
+  justify-content: flex-start;
+  padding: 8rem 5vw 5rem;
   overflow: hidden;
   background-color: var(--color-cinematic-black, #060608);
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    padding: 8rem 2rem 4rem;
+    justify-content: center;
+  }
 }
 
 .hero-media-wrap {
@@ -31,49 +51,60 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  filter: brightness(0.68) contrast(1.1);
+  object-position: 70% center;
+  filter: brightness(0.7) contrast(1.1);
   transform: scale(1.03);
-  animation: heroZoom 25s infinite alternate cubic-bezier(0.25, 1, 0.5, 1);
+  animation: heroZoomFloat 28s infinite alternate cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-@keyframes heroZoom {
-  0% { transform: scale(1.02); }
-  100% { transform: scale(1.1); }
+@keyframes heroZoomFloat {
+  0% { transform: scale(1.02) translateX(0); }
+  100% { transform: scale(1.1) translateX(-15px); }
 }
 
 .hero-overlay {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(circle at center, rgba(6, 6, 8, 0.25) 0%, rgba(6, 6, 8, 0.85) 85%);
+  background: linear-gradient(90deg, rgba(6, 6, 8, 0.92) 0%, rgba(6, 6, 8, 0.65) 45%, rgba(6, 6, 8, 0.3) 100%);
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 960px;
-  text-align: center;
-  margin: 0 auto;
+  max-width: 640px;
+  text-align: left;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .hero-content {
+    text-align: center;
+    margin: 0 auto;
+  }
 }
 
 .hero-meta-tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   font-family: var(--font-metadata, monospace);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--color-champagne-gold, #D4B44A);
-  margin-bottom: 1.8rem;
-  padding: 5px 16px;
-  background: rgba(10, 10, 12, 0.65);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  border-radius: var(--radius-full, 9999px);
-  backdrop-filter: blur(12px);
+  margin-bottom: 2rem;
+}
+
+.hero-meta-tag::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background-color: var(--color-champagne-gold);
 }
 
 .hero-title {
   font-family: var(--font-heading, 'Playfair Display', serif);
-  font-size: clamp(3.2rem, 8vw, 6.2rem);
+  font-size: clamp(3.2rem, 7vw, 5.8rem);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -82,32 +113,47 @@
   text-transform: uppercase;
 }
 
+.text-gold-accent {
+  color: var(--color-champagne-gold, #D4B44A);
+}
+
 .hero-subtext {
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
   color: var(--color-muted-grey, #A1A1AA);
-  max-width: 680px;
-  margin: 0 auto 3rem;
+  max-width: 580px;
+  margin-bottom: 2.8rem;
   line-height: 1.7;
   font-weight: 300;
+}
+
+@media (max-width: 1024px) {
+  .hero-subtext {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .hero-cta-group {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
+}
+
+@media (max-width: 1024px) {
+  .hero-cta-group {
+    justify-content: center;
+  }
 }
 
 .scroll-indicator {
   position: absolute;
   bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 5vw;
   z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   color: var(--color-muted-grey);
   text-decoration: none;
@@ -116,6 +162,14 @@
   text-transform: uppercase;
   letter-spacing: 0.25em;
   transition: color var(--transition-fast);
+}
+
+@media (max-width: 1024px) {
+  .scroll-indicator {
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+  }
 }
 
 .scroll-indicator:hover {
@@ -137,10 +191,10 @@
 }
 
 /* --------------------------------------------------------------------------
-   02. EDITORIAL BRAND STATEMENT
+   02. EDITORIAL BRAND STATEMENT / MANIFESTO TITLE CARD
    -------------------------------------------------------------------------- */
 .brand-statement-section {
-  padding: clamp(6rem, 10vw, 9.5rem) 2rem;
+  padding: clamp(7rem, 12vw, 11rem) 2rem;
   background-color: var(--color-cinematic-black);
   position: relative;
   text-align: center;
@@ -154,83 +208,89 @@
 .statement-tag {
   font-family: var(--font-metadata, monospace);
   font-size: 0.7rem;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--color-champagne-gold);
-  margin-bottom: 2.2rem;
+  margin-bottom: 2.5rem;
   display: block;
 }
 
-.editorial-headline {
+.editorial-headline-sub {
   font-family: var(--font-heading, 'Playfair Display', serif);
-  font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 500;
+  color: var(--color-muted-grey);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.2rem;
+}
+
+.editorial-headline-main {
+  font-family: var(--font-heading, 'Playfair Display', serif);
+  font-size: clamp(2.8rem, 6.5vw, 5.5rem);
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.1;
   color: var(--color-ivory);
   text-transform: uppercase;
   letter-spacing: -0.01em;
 }
 
 .gold-divider-rule {
-  width: 60px;
+  width: 50px;
   height: 1px;
   background: var(--color-champagne-gold);
-  opacity: 0.5;
-  margin: 3.5rem auto 0;
+  opacity: 0.4;
+  margin: 4rem auto 0;
 }
 
 /* --------------------------------------------------------------------------
-   03. HYENA PHILOSOPHY SECTION
+   03. HYENA PHILOSOPHY SECTION (50/50 MONUMENTAL SPREAD)
    -------------------------------------------------------------------------- */
 .hyena-philosophy-section {
-  padding: clamp(6rem, 9vw, 9rem) 2rem;
-  background: linear-gradient(180deg, var(--color-cinematic-black) 0%, var(--color-obsidian) 100%);
+  padding: clamp(6rem, 10vw, 9rem) 2rem;
+  background: var(--color-cinematic-black);
   position: relative;
   overflow: hidden;
 }
 
 .philosophy-grid {
-  max-width: 1280px;
+  max-width: 1320px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: 4.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
   align-items: center;
 }
 
 @media (max-width: 1024px) {
   .philosophy-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 3.5rem;
   }
 }
 
 .hyena-imagery-wrap {
   position: relative;
-  border-radius: var(--radius-md, 16px);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
 }
 
 .hyena-img {
   width: 100%;
-  height: 520px;
+  height: 560px;
   object-fit: cover;
   object-position: center;
-  filter: contrast(1.15) brightness(0.85);
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+  filter: contrast(1.18) brightness(0.88);
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hyena-imagery-wrap:hover .hyena-img {
   transform: scale(1.03);
-  filter: contrast(1.2) brightness(0.95);
 }
 
 .hyena-img-vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 35%, var(--color-cinematic-black) 98%);
+  background: radial-gradient(circle at center, transparent 40%, var(--color-cinematic-black) 95%);
   pointer-events: none;
 }
 
@@ -262,15 +322,15 @@
   font-size: 1.08rem;
   color: var(--color-muted-grey);
   line-height: 1.8;
-  margin-bottom: 2.2rem;
+  margin-bottom: 2.5rem;
   font-weight: 300;
 }
 
 .philosophy-traits {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.8rem;
-  padding-top: 1.8rem;
+  gap: 2rem;
+  padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 

@@ -71,69 +71,53 @@ h1, h2, h3, h4, .font-heading {
   text-align: center;
 }
 
-/* Primary Editorial Buttons */
+/* Primary Editorial Action Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 14px 32px;
+  padding: 14px 28px;
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   text-decoration: none;
-  border-radius: var(--radius-sm);
+  border-radius: 2px;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
-  overflow: hidden;
-  border: 1px solid transparent;
+  border: 1px solid rgba(212, 175, 55, 0.4);
 }
 
 .btn-gold {
-  background-color: var(--color-gold);
-  color: var(--color-obsidian);
-  border-color: var(--color-gold);
+  background-color: var(--color-champagne-gold, #D4B44A);
+  color: var(--color-cinematic-black, #060608);
+  border-color: var(--color-champagne-gold, #D4B44A);
   font-weight: 600;
 }
 
 .btn-gold:hover {
-  background-color: var(--color-gold-bright);
-  border-color: var(--color-gold-bright);
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
-  transform: translateY(-2px);
+  background-color: #E2C358;
+  border-color: #E2C358;
+  transform: translateX(4px);
 }
 
 .btn-outline-gold {
   background: transparent;
-  color: var(--color-white);
-  border-color: rgba(212, 175, 55, 0.5);
+  color: var(--color-ivory);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .btn-outline-gold:hover {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
-  background: rgba(212, 175, 55, 0.08);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-  transform: translateY(-2px);
-}
-
-.btn-charcoal {
-  background-color: var(--color-charcoal);
-  color: var(--color-white);
-  border-color: var(--color-border);
-}
-
-.btn-charcoal:hover {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
-  background-color: var(--color-charcoal-light);
+  border-color: var(--color-champagne-gold);
+  color: var(--color-champagne-gold);
+  transform: translateX(4px);
 }
 
 /* --------------------------------------------------------------------------
-   2. NAVIGATION BAR & MOBILE DRAWER
+   2. NAVIGATION BAR & MOBILE DRAWER (FILM STUDIO HEADER)
    -------------------------------------------------------------------------- */
 .navbar {
   position: fixed;
@@ -141,16 +125,16 @@ h1, h2, h3, h4, .font-heading {
   left: 0;
   width: 100%;
   z-index: 10000;
-  padding: 1.5rem 0;
-  transition: all var(--transition-smooth);
+  padding: 1.8rem 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar.scrolled {
-  background: var(--color-obsidian-translucent);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(6, 6, 8, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   padding: 1rem 0;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .nav-container {
@@ -170,24 +154,23 @@ h1, h2, h3, h4, .font-heading {
 }
 
 .brand-logo img {
-  height: 42px;
-  width: 42px;
+  height: 38px;
+  width: 38px;
   object-fit: cover;
   object-position: 50% 22%;
   border-radius: 50%;
-  transform: scale(1.18);
 }
 
 .brand-text {
   font-family: var(--font-heading);
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  color: var(--color-white);
+  color: var(--color-ivory);
   letter-spacing: -0.01em;
 }
 
 .brand-text span {
-  color: var(--color-gold);
+  color: var(--color-champagne-gold);
 }
 
 .nav-links {
@@ -198,10 +181,10 @@ h1, h2, h3, h4, .font-heading {
 }
 
 .nav-link {
-  color: var(--color-text-muted);
+  color: var(--color-muted-grey);
   text-decoration: none;
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   transition: color var(--transition-fast);
   position: relative;
@@ -209,7 +192,7 @@ h1, h2, h3, h4, .font-heading {
 }
 
 .nav-link:hover, .nav-link.active {
-  color: var(--color-white);
+  color: var(--color-ivory);
 }
 
 .nav-link::after {
@@ -218,8 +201,8 @@ h1, h2, h3, h4, .font-heading {
   bottom: 0;
   left: 0;
   width: 0;
-  height: 2px;
-  background-color: var(--color-gold);
+  height: 1px;
+  background-color: var(--color-champagne-gold);
   transition: width var(--transition-fast);
 }
 
@@ -227,196 +210,65 @@ h1, h2, h3, h4, .font-heading {
   width: 100%;
 }
 
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.hamburger-btn {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 28px;
-  height: 18px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.hamburger-btn span {
-  width: 100%;
-  height: 2px;
-  background-color: var(--color-white);
-  transition: all var(--transition-fast);
-}
-
-.hamburger-btn.active span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-.hamburger-btn.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger-btn.active span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-.mobile-drawer {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 80%;
-  max-width: 400px;
-  height: 100vh;
-  background-color: var(--color-obsidian-surface);
-  border-left: 1px solid var(--color-border);
-  z-index: 9999;
-  padding: 6rem 2rem 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: right var(--transition-smooth);
-}
-
-.mobile-drawer.open {
-  right: 0;
-}
-
-.mobile-nav-links {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.mobile-nav-link {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  color: var(--color-white);
-  text-decoration: none;
-}
-
 /* --------------------------------------------------------------------------
-   3. PIPELINE CARDS & TIMELINE
+   3. PRODUCTION PIPELINE TIMELINE
    -------------------------------------------------------------------------- */
 .pipeline-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 3rem;
   margin-top: 4rem;
   position: relative;
 }
 
 .pipeline-card {
-  background: var(--color-obsidian-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 2.5rem 2rem;
+  background: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2.5rem 0;
   cursor: pointer;
-  transition: all var(--transition-smooth);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
-  user-select: none;
 }
 
 .pipeline-card:hover, .pipeline-card.active {
-  border-color: var(--color-gold);
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-gold);
-}
-
-.pipeline-card:focus-visible {
-  outline: 2px solid var(--color-gold);
-  outline-offset: 4px;
-}
-
-.pipeline-card.active::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 3px;
-  background: linear-gradient(90deg, var(--color-gold), var(--color-gold-bright));
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
-}
-
-/* Active Downward Pointer Arrow */
-.pipeline-card.active::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 10px solid var(--color-gold);
-  z-index: 10;
-  transition: all var(--transition-smooth);
-}
-
-.pipeline-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
+  border-top-color: var(--color-champagne-gold);
 }
 
 .pipeline-stage-number {
   font-family: var(--font-heading);
-  font-size: 2.5rem;
-  color: var(--color-gold-muted);
-  margin-bottom: 0;
-  transition: color var(--transition-smooth);
+  font-size: 2.8rem;
+  color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 1.2rem;
+  transition: color 0.4s ease;
 }
 
-.pipeline-card.active .pipeline-stage-number,
-.pipeline-card:hover .pipeline-stage-number {
-  color: var(--color-gold);
-}
-
-.pipeline-card-arrow {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-muted);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.pipeline-card:hover .pipeline-card-arrow {
-  background: rgba(212, 175, 55, 0.15);
-  border-color: var(--color-gold);
-  color: var(--color-gold);
-  transform: translateX(4px);
-  box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
-}
-
-.pipeline-card.active .pipeline-card-arrow {
-  background: var(--color-gold);
-  border-color: var(--color-gold);
-  color: var(--color-obsidian);
-  transform: rotate(90deg);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+.pipeline-card:hover .pipeline-stage-number,
+.pipeline-card.active .pipeline-stage-number {
+  color: var(--color-champagne-gold);
 }
 
 .pipeline-card-title {
-  font-size: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--color-ivory);
   margin-bottom: 0.5rem;
 }
 
 .pipeline-card-sub {
-  font-size: 0.8rem;
+  font-family: var(--font-metadata, monospace);
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--color-gold);
-  margin-bottom: 1rem;
+  color: var(--color-champagne-gold);
+  margin-bottom: 1.2rem;
 }
 
 .pipeline-card-desc {
   font-size: 0.92rem;
-  color: var(--color-text-muted);
-  line-height: 1.6;
+  color: var(--color-muted-grey);
+  line-height: 1.7;
+  font-weight: 300;
 }
 
 .pipeline-tags {
