@@ -76,12 +76,13 @@ h1, h2, h3, h4, .font-heading {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
+  white-space: nowrap;
   padding: 14px 28px;
   font-family: var(--font-body);
   font-size: 0.82rem;
   font-weight: 500;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 2px;
@@ -89,6 +90,15 @@ h1, h2, h3, h4, .font-heading {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   border: 1px solid rgba(212, 175, 55, 0.4);
+  box-sizing: border-box;
+  width: auto;
+  max-width: 100%;
+}
+
+.btn-sm {
+  padding: 9px 20px;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
 }
 
 .btn-gold {
@@ -101,18 +111,25 @@ h1, h2, h3, h4, .font-heading {
 .btn-gold:hover {
   background-color: #E2C358;
   border-color: #E2C358;
-  transform: translateX(4px);
 }
 
 .btn-outline-gold {
   background: transparent;
   color: var(--color-ivory);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .btn-outline-gold:hover {
   border-color: var(--color-champagne-gold);
   color: var(--color-champagne-gold);
+}
+
+.btn-arrow {
+  display: inline-block;
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn:hover .btn-arrow {
   transform: translateX(4px);
 }
 
@@ -208,6 +225,77 @@ h1, h2, h3, h4, .font-heading {
 
 .nav-link:hover::after, .nav-link.active::after {
   width: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger-btn span {
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-ivory);
+  transition: all var(--transition-fast);
+}
+
+.hamburger-btn.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 360px;
+  height: 100vh;
+  background-color: rgba(10, 10, 12, 0.96);
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 9999;
+  padding: 6rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-drawer.open {
+  right: 0;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.mobile-nav-link {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-ivory);
+  text-decoration: none;
 }
 
 /* --------------------------------------------------------------------------

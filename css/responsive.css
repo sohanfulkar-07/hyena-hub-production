@@ -83,7 +83,7 @@
 
 /* Mobile Screens (< 768px) */
 @media (max-width: 768px) {
-  .nav-links, .nav-actions .btn {
+  .nav-links {
     display: none;
   }
 
