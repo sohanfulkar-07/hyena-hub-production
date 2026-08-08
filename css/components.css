@@ -170,9 +170,12 @@ h1, h2, h3, h4, .font-heading {
 }
 
 .brand-logo img {
-  height: 38px;
-  width: auto;
-  border-radius: var(--radius-sm);
+  height: 42px;
+  width: 42px;
+  object-fit: cover;
+  object-position: 50% 22%;
+  border-radius: 50%;
+  transform: scale(1.18);
 }
 
 .brand-text {
