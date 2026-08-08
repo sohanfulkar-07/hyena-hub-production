@@ -266,18 +266,18 @@
       return (
         <div className="relative min-h-screen w-full flex items-center justify-center p-4 sm:p-6 lg:p-12 pt-28 pb-16 overflow-hidden">
           
-          <!-- Dynamic Background Blur Spheres -->
+          {/* Dynamic Background Blur Spheres */}
           <div className="absolute top-1/4 left-10 w-96 h-96 rounded-full bg-indigo-cyber/25 blur-[120px] animate-float-slow-1 pointer-events-none z-0" />
           <div className="absolute bottom-1/4 right-10 w-[420px] h-[420px] rounded-full bg-champagne/20 blur-[140px] animate-float-slow-2 pointer-events-none z-0" />
 
-          <!-- ASYMMETRIC 60/40 SPLIT SCREEN CONSOLE -->
+          {/* ASYMMETRIC 60/40 SPLIT SCREEN CONSOLE */}
           <main className="relative z-10 w-full max-w-7xl glass-console-panel rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
             
-            <!-- LEFT PANEL: DYNAMIC HOLOGRAPHIC EXECUTIVE MEMO (40% DESKTOP) -->
+            {/* LEFT PANEL: DYNAMIC HOLOGRAPHIC EXECUTIVE MEMO (40% DESKTOP) */}
             <div className="lg:col-span-5 p-8 lg:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.015] relative">
               
               <div>
-                <!-- Recipient Status Header -->
+                {/* Recipient Status Header */}
                 <div className="flex items-center justify-between mb-8">
                   <div className="flex items-center gap-3">
                     <img src="assets/images/logo/logo.png" alt="Hyena Emblem" className="w-9 h-9 rounded-full object-cover border border-champagne/40 shadow-lg" />
@@ -293,7 +293,7 @@
                   </div>
                 </div>
 
-                <!-- HOLOGRAPHIC MEMO CARD -->
+                {/* HOLOGRAPHIC MEMO CARD */}
                 <div className="holographic-card rounded-2xl p-6 sm:p-7 relative overflow-hidden">
                   <div className="flex items-center justify-between text-[11px] font-mono text-gray-400 pb-4 mb-5 border-b border-white/10">
                     <span className="text-champagne font-bold">EXECUTIVE DISPATCH MEMO</span>
@@ -356,7 +356,7 @@
               </div>
             </div>
 
-            <!-- RIGHT PANEL: INTERACTION WORKSPACE (60% DESKTOP) -->
+            {/* RIGHT PANEL: INTERACTION WORKSPACE (60% DESKTOP) */}
             <div className="lg:col-span-7 p-8 lg:p-12 flex flex-col justify-between relative">
               
               {!isDispatched ? (
@@ -366,7 +366,7 @@
                     <h1 className="font-space text-3xl sm:text-4xl font-bold text-white mt-1">Executive Dispatch Console</h1>
                   </div>
 
-                  <!-- SMART INTENT CATEGORY BADGES -->
+                  {/* SMART INTENT CATEGORY BADGES */}
                   <div className="mb-7">
                     <label className="text-xs font-mono text-gray-400 uppercase tracking-wider block mb-2.5">MESSAGE INTENT</label>
                     <div className="flex flex-wrap gap-2.5">
@@ -388,11 +388,11 @@
                     </div>
                   </div>
 
-                  <!-- INPUT FORM -->
+                  {/* INPUT FORM */}
                   <form onSubmit={handleDispatchSubmit} className="space-y-5">
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <!-- Floating Field: Full Name -->
+                      {/* Floating Field: Full Name */}
                       <div className="floating-field-wrap">
                         <input
                           type="text"
@@ -406,7 +406,7 @@
                         <label htmlFor="senderName" className="console-label">Your Full Name *</label>
                       </div>
 
-                      <!-- Floating Field: Email -->
+                      {/* Floating Field: Email */}
                       <div className="floating-field-wrap">
                         <input
                           type="email"
@@ -422,7 +422,7 @@
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <!-- Floating Field: Subject -->
+                      {/* Floating Field: Subject */}
                       <div className="floating-field-wrap">
                         <input
                           type="text"
@@ -436,7 +436,7 @@
                         <label htmlFor="msgSubject" className="console-label">Transmission Subject *</label>
                       </div>
 
-                      <!-- Floating Field: Organization -->
+                      {/* Floating Field: Organization */}
                       <div className="floating-field-wrap">
                         <input
                           type="text"
@@ -450,7 +450,7 @@
                       </div>
                     </div>
 
-                    <!-- AI TONE SWITCHER -->
+                    {/* AI TONE SWITCHER */}
                     <div>
                       <div className="flex items-center justify-between mb-2">
                         <label className="text-xs font-mono text-gray-400 uppercase tracking-wider">SELECT AI DISPATCH TONE</label>
@@ -473,7 +473,7 @@
                       </div>
                     </div>
 
-                    <!-- Floating Field: Message Area -->
+                    {/* Floating Field: Message Area */}
                     <div className="floating-field-wrap">
                       <textarea
                         id="msgBody"
@@ -487,7 +487,7 @@
                       <label htmlFor="msgBody" className="console-label">Executive Message *</label>
                     </div>
 
-                    <!-- ATTACHMENT MAGNETIC DOCK -->
+                    {/* ATTACHMENT MAGNETIC DOCK */}
                     <div
                       onDragOver={handleDragOver}
                       onDragLeave={handleDragLeave}
@@ -504,7 +504,7 @@
                       <span className="text-[10px] text-gray-500 uppercase tracking-wider font-mono">Supports PDF, DOCX, MP4, MOV (Up to 50MB)</span>
                     </div>
 
-                    <!-- PRIMARY DISPATCH BUTTON -->
+                    {/* PRIMARY DISPATCH BUTTON */}
                     <div className="shimmer-btn-wrap pt-2">
                       <button
                         type="submit"
@@ -529,7 +529,7 @@
                   </form>
                 </div>
               ) : (
-                <!-- DISPATCH SUCCESS SCREEN -->
+                {/* DISPATCH SUCCESS SCREEN */}
                 <div className="text-center py-12 animate-fade-in">
                   <div className="w-20 h-20 rounded-full bg-champagne/20 border-2 border-champagne text-champagne flex items-center justify-center text-3xl mx-auto mb-6 shadow-[0_0_50px_rgba(245,158,11,0.5)]">
                     ✦
